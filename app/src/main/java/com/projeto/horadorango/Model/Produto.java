@@ -31,7 +31,7 @@ public class Produto extends RealmObject {
         return descricao;
     }
 
-    public Produto setDescricaco(String descricaco){
+    public Produto setDescricao(String descricao){
         this.descricao = descricao;
         return this;
     }

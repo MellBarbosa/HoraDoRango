@@ -54,18 +54,18 @@ public class PedidoActivity extends AppCompatActivity implements View.OnClickLis
 
         final int id;
 
-//        id = getIntent().getExtras().getInt(EXTRA_ID, 0);
+        id = getIntent().getExtras().getInt(EXTRA_ID, 0);
 
-   //     if (id > 0) {
-    //        empresa = realm.where(Empresa.class).equalTo("id", id).findFirst();
-    //        tvEmpresa.setText(empresa.getNome_fantasia());
-    //        tvHorarioFunc.setText(empresa.getHorario_func());
-   //         tvHorariosEntrega.setText(empresa.getHorario_entrega());
+        if (id > 0) {
+            empresa = realm.where(Empresa.class).equalTo("id", id).findFirst();
+            tvEmpresa.setText(empresa.getNome_fantasia());
+            tvHorarioFunc.setText(empresa.getHorario_func());
+            tvHorariosEntrega.setText(empresa.getHorario_entrega());
             // concatenar os 3 telefones
-    //        tvTelefones.setText(empresa.getTel1());
+            tvTelefones.setText(empresa.getTel1()+ "; " +empresa.getTel2()+ "; " +empresa.getTel3());
             // buscar o endereco desta empresa concatenado com bairro, numero, complemento
-           // tvEndereco.setText(endereco.getEndereco());
-    //    }
+            tvEndereco.setText(endereco.getEndereco());
+        }
 
 
     }

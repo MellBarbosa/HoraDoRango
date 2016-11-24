@@ -124,7 +124,7 @@ public class CadProdutoActivity extends AppCompatActivity {
         if (produto == null)
             produto = Produto.create(realm);
 
-        produto.setDescricaco(edtDescricao.getText().toString())
+        produto.setDescricao(edtDescricao.getText().toString())
                 .setValor(Double.parseDouble(edtValor.getText().toString()))
                 .setCategoria((Categoria) spCategoria.getSelectedItem())
                 .setEmpresa((Empresa) spEmp.getSelectedItem());

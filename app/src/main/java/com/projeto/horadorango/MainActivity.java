@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity
         empresaListView.setOnItemClickListener(this);
 
         realm = Realm.getDefaultInstance();
-        empresaAdapter = new EmpresaAdapter(this, realm.where(Empresa.class).findAll());//equalTo("Categoria", 1).findAll());
+        empresaAdapter = new EmpresaAdapter(this, realm.where(Produto.class).equalTo("categoria.id", 1).findAll());
         empresaListView.setAdapter(empresaAdapter);
     }
 
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent(this, PedidoActivity.class);
-     //   intent.putExtra(EnderecoActivity.EXTRA_ID, EmpresaAdapter.getItem(position).getId());
+        intent.putExtra(PedidoActivity.EXTRA_ID, empresaAdapter.getItem(position).getEmpresa().getId());
         startActivity(intent);
     }
 

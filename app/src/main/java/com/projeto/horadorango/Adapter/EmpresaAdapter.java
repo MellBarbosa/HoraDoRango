@@ -17,11 +17,11 @@ import java.util.ArrayList;
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmBaseAdapter;
 
-public class EmpresaAdapter extends RealmBaseAdapter<Empresa> implements ListAdapter {
+public class EmpresaAdapter extends RealmBaseAdapter<Produto> implements ListAdapter {
 
     private LayoutInflater layoutInflater;
 
-    public EmpresaAdapter(Context context, OrderedRealmCollection<Empresa> realmResults){
+    public EmpresaAdapter(Context context, OrderedRealmCollection<Produto> realmResults){
         super(context, realmResults);
         layoutInflater = LayoutInflater.from(context);
     }
@@ -45,20 +45,17 @@ public class EmpresaAdapter extends RealmBaseAdapter<Empresa> implements ListAda
         else{
             holder = (ViewHolder)row.getTag();
         }
-        Empresa empresa = getItem(position);
+        Produto produto = getItem(position);
 
-   //     holder.tvEmpresa.setText(produto.getEmpresa().getNome_fantasia());
-  //      holder.tvHorarioEntrega.setText(produto.getEmpresa().getHorario_func());
-  //      holder.tvPratoDia.setText(produto.getDescricao());
-
-        holder.tvEmpresa.setText(empresa.getNome_fantasia());
-        holder.tvHorarioEntrega.setText(empresa.getHorario_entrega());
+        holder.tvEmpresa.setText(produto.getEmpresa().getNome_fantasia());
+        holder.tvHorarioEntrega.setText(produto.getEmpresa().getHorario_func());
+        holder.tvPratoDia.setText(produto.getDescricao());
 
         return row;
     }
 
     class ViewHolder{
-        TextView tvPratoDia, tvHorarioEntrega, tvEmpresa;
+        TextView tvEmpresa, tvHorarioEntrega, tvPratoDia ;
     }
 
 }

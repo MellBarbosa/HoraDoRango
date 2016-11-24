@@ -99,4 +99,8 @@ public class Empresa extends RealmObject {
         return realm.createObject(Empresa.class, getNextPrimaryKey(realm, Empresa.class));
     }
 
+    public String toString(){
+        return nome_fantasia;
+    }
+
 }
