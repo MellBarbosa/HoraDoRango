@@ -8,8 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.projeto.horadorango.Model.Usuario;
-
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
 

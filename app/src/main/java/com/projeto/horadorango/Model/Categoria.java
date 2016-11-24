@@ -1,47 +1,47 @@
-package com.projeto.horadorango.Model;
+package com.projeto.horadorango.model;
 
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.table.DatabaseTable;
 
-import java.io.Serializable;
+import io.realm.Realm;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
+import static com.projeto.horadorango.util.RealmUtil.getNextPrimaryKey;
 
 /**
  * Created by Mell on 25/10/2016.
  */
-@DatabaseTable(tableName = "CATEGORIA")
-public class Categoria implements Serializable {
+public class Categoria extends RealmObject {
 
-    public final static String ID = "id";
-    public final static String DESCRICAO = "descricao";
+    @PrimaryKey
+    private int id;
 
-
-    @DatabaseField(columnName = ID, id = true)
-    private long id;
-
-    @DatabaseField(columnName = DESCRICAO)
     private String descricao;
 
-    public static String getID() {
-        return ID;
-    }
-
-    public static String getDESCRICAO() {
-        return DESCRICAO;
-    }
-
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public Categoria setId(int id) {
         this.id = id;
+        return this;
     }
 
     public String getDescricao() {
         return descricao;
     }
 
-    public void setDescricao(String descricao) {
+    public Categoria setDescricao(String descricao) {
         this.descricao = descricao;
+        return this;
     }
+
+    @Override
+    public String toString(){
+        return descricao;
+    }
+
+    public static Categoria create(Realm realm){
+        return realm.createObject(Categoria.class, getNextPrimaryKey(realm, Categoria.class));
+    }
+
 }

@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.projeto.horadorango.Adapter.EmpresaAdapter$EnderecoAdapter">
+    tools:context="com.projeto.horadorango.adapter.EmpresaAdapter$EnderecoAdapter">
 
     <TextView
         android:text="Endereço:"
@@ -17,7 +17,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/textView" />
+        android:id="@+id/textView"
+        android:textStyle="normal|bold" />
 
     <TextView
         android:text="Bairro:"
@@ -26,16 +27,18 @@
         android:layout_below="@+id/textView"
         android:layout_alignRight="@+id/textView"
         android:layout_alignEnd="@+id/textView"
-        android:id="@+id/textView2" />
+        android:id="@+id/textView2"
+        android:textStyle="normal|bold" />
 
     <TextView
-        android:text="Nº:"
+        android:text="Número:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
         android:layout_alignRight="@+id/textView2"
         android:layout_alignEnd="@+id/textView2"
-        android:id="@+id/textView3" />
+        android:id="@+id/textView3"
+        android:textStyle="normal|bold" />
 
     <TextView
         android:text="TextView"
@@ -56,7 +59,8 @@
         android:layout_toRightOf="@+id/tvNumero"
         android:layout_toEndOf="@+id/tvNumero"
         android:layout_marginLeft="11dp"
-        android:layout_marginStart="11dp" />
+        android:layout_marginStart="11dp"
+        android:textStyle="normal|bold" />
 
     <TextView
         android:text="TextView"
@@ -87,4 +91,5 @@
         android:id="@+id/tvBairro"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
 </RelativeLayout>

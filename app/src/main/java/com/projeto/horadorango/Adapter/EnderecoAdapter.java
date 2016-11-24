@@ -1,59 +1,40 @@
-package com.projeto.horadorango.Adapter;
+package com.projeto.horadorango.adapter;
 
 import android.content.Context;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.projeto.horadorango.Model.Endereco;
+import com.projeto.horadorango.model.Endereco;
 import com.projeto.horadorango.R;
 
-import java.util.ArrayList;
+import io.realm.OrderedRealmCollection;
+import io.realm.RealmBaseAdapter;
 
 /**
  * Created by Mell on 27/10/2016.
  */
 
-public class EnderecoAdapter extends BaseAdapter {
+public class EnderecoAdapter extends RealmBaseAdapter<Endereco> implements ListAdapter {
 
-    private ArrayList<Endereco> listaEnderecos;
-    private Context contexto;
+    private  LayoutInflater layoutInflater;
 
-    public EnderecoAdapter(Context c, ArrayList<Endereco> ed){
-        contexto = c;
-        listaEnderecos = ed;
-    }
-
-    @Override
-    public int getCount() {
-        return listaEnderecos.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return listaEnderecos.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return listaEnderecos.get(position).getId();
+    public EnderecoAdapter(Context context, OrderedRealmCollection<Endereco> realmResults){
+        super(context, realmResults);
+        layoutInflater = LayoutInflater.from(context);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         View row = convertView;
-        EnderecoAdapter.EnderecoHolder holder = null;
+        ViewHolder holder;
+
         if (row == null){
+            row = layoutInflater.inflate(R.layout.activity_endereco_adapter, parent, false);
 
-            LayoutInflater Inflater = LayoutInflater.from(contexto);
-            row = Inflater.inflate(R.layout.activity_endereco_adapter, parent, false);
-
-            holder = new EnderecoAdapter.EnderecoHolder();
+            holder = new ViewHolder();
             holder.tvEndereco = (TextView)row.findViewById(R.id.tvEndereco);
             holder.tvBairro = (TextView)row.findViewById(R.id.tvBairro);
             holder.tvNumero = (TextView)row.findViewById(R.id.tvNumero);
@@ -61,9 +42,10 @@ public class EnderecoAdapter extends BaseAdapter {
             row.setTag(holder);
         }
         else{
-            holder = (EnderecoAdapter.EnderecoHolder)row.getTag();
+            holder = (ViewHolder)row.getTag();
         }
-        Endereco e = listaEnderecos.get(position);
+
+        Endereco e = getItem(position);
         //preenchendo o textview
         holder.tvEndereco.setText(e.getEndereco());
         holder.tvBairro.setText(e.getBairro().getDescricao());
@@ -72,7 +54,7 @@ public class EnderecoAdapter extends BaseAdapter {
         return row;
     }
 
-    class EnderecoHolder{
+    class ViewHolder{
         TextView tvEndereco, tvBairro, tvNumero, tvComplemento;
     }
 }

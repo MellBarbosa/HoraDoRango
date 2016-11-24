@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.projeto.horadorango.Adapter.EmpresaAdapter">
+    tools:context="com.projeto.horadorango.adapter.EmpresaAdapter">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -21,10 +21,9 @@
         android:id="@+id/imageView4"
         android:layout_marginRight="277dp"
         android:layout_marginEnd="277dp"
-        android:layout_marginBottom="463dp"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/textView4" />
 
     <TextView
         android:text="TextView"
@@ -32,44 +31,42 @@
         android:layout_height="wrap_content"
         android:id="@+id/tvEmpresa"
         android:textStyle="normal|bold"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:textSize="18sp"
         android:layout_marginLeft="83dp"
         android:layout_marginStart="83dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:textSize="18sp" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvPratoDia"
-        android:layout_alignLeft="@+id/tvEmpresa"
-        android:layout_alignStart="@+id/tvEmpresa"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
+        android:textSize="14sp"
         android:layout_below="@+id/tvEmpresa"
-        android:layout_above="@+id/tvHorarioEntrega" />
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageView4"
-        android:id="@+id/tvHorarioEntrega"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_toRightOf="@+id/textView4"
-        android:layout_toEndOf="@+id/textView4" />
+        android:layout_alignLeft="@+id/tvEmpresa"
+        android:layout_alignStart="@+id/tvEmpresa" />
 
     <TextView
         android:text="Horário Entrega:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageView4"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/tvPratoDia"
         android:layout_alignLeft="@+id/tvPratoDia"
-        android:layout_alignStart="@+id/tvPratoDia"
-        android:id="@+id/textView4" />
+        android:layout_alignStart="@+id/tvPratoDia" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvHorarioEntrega"
+        android:layout_below="@+id/tvPratoDia"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/textView4" />
+
 </RelativeLayout>

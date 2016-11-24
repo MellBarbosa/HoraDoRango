@@ -1,143 +1,101 @@
-package com.projeto.horadorango.Model;
+package com.projeto.horadorango.model;
 
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.table.DatabaseTable;
-
-import java.io.Serializable;
 import java.util.Date;
+
+import io.realm.Realm;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
+import static com.projeto.horadorango.util.RealmUtil.getNextPrimaryKey;
 
 /**
  * Created by Mell on 25/10/2016.
  */
-@DatabaseTable(tableName = "PEDIDO")
-public class Pedido implements Serializable {
+public class Pedido extends RealmObject {
 
-    public final static String ID = "id";
-    public final static String DATA = "data";
-    public final static String STATUS = "status";
-    public final static String USUARIO_ID = "usuario_id";
-    public final static String EMPRESA_ID = "empresa_id";
-    public final static String HORA_AGEND_ENTREGA = "hora_agend_entrega";
-    public final static String HORARIO_ENTREGA = "horario_entrega";
-    public final static String ENDERECO_ID = "endereco_id";
-
-    @DatabaseField(columnName = ID)
-    private long id;
-
-    @DatabaseField(columnName = DATA)
+    @PrimaryKey
+    private int id;
     private Date data;
-
-    @DatabaseField(columnName = STATUS)
     private String status;
-
-    @DatabaseField(columnName = HORA_AGEND_ENTREGA)
-    private int hora_agend_entrega;
-
-    @DatabaseField(columnName = HORARIO_ENTREGA)
-    private int horario_entrega;
-
-    @DatabaseField(columnName = USUARIO_ID, foreign = true, foreignAutoRefresh = true)
     private Usuario usuario;
-
-    @DatabaseField(columnName = EMPRESA_ID, foreign = true, foreignAutoRefresh = true)
     private Empresa empresa;
-
-    @DatabaseField(columnName = ENDERECO_ID, foreign = true, foreignAutoRefresh = true)
+    private Date hora_agend_entrega;
+    private Date horario_entrega;
     private Endereco endereco;
 
-    public static String getID() {
-        return ID;
-    }
-
-    public static String getDATA() {
-        return DATA;
-    }
-
-    public static String getSTATUS() {
-        return STATUS;
-    }
-
-    public static String getUsuarioId() {
-        return USUARIO_ID;
-    }
-
-    public static String getEmpresaId() {
-        return EMPRESA_ID;
-    }
-
-    public static String getHoraAgendEntrega() {
-        return HORA_AGEND_ENTREGA;
-    }
-
-    public static String getHorarioEntrega() {
-        return HORARIO_ENTREGA;
-    }
-
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public Pedido setId(int id) {
         this.id = id;
+        return this;
     }
 
     public Date getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public Pedido setData(Date data) {
         this.data = data;
+        return this;
     }
 
     public String getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public Pedido setStatus(String status) {
         this.status = status;
-    }
-
-    public int getHora_agend_entrega() {
-        return hora_agend_entrega;
-    }
-
-    public void setHora_agend_entrega(int hora_agend_entrega) {
-        this.hora_agend_entrega = hora_agend_entrega;
-    }
-
-    public int getHorario_entrega() {
-        return horario_entrega;
-    }
-
-    public void setHorario_entrega(int horario_entrega) {
-        this.horario_entrega = horario_entrega;
+        return this;
     }
 
     public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public Pedido setUsuario(Usuario usuario) {
         this.usuario = usuario;
+        return this;
     }
 
     public Empresa getEmpresa() {
         return empresa;
     }
 
-    public void setEmpresa(Empresa empresa) {
+    public Pedido setEmpresa(Empresa empresa) {
         this.empresa = empresa;
+        return this;
+    }
+
+    public Date getHora_agend_entrega() {
+        return hora_agend_entrega;
+    }
+
+    public Pedido setHora_agend_entrega(Date hora_agend_entrega) {
+        this.hora_agend_entrega = hora_agend_entrega;
+        return this;
+    }
+
+    public Date getHorario_entrega() {
+        return horario_entrega;
+    }
+
+    public Pedido setHorario_entrega(Date horario_entrega) {
+        this.horario_entrega = horario_entrega;
+        return this;
     }
 
     public Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(Endereco endereco) {
+    public Pedido setEndereco(Endereco endereco) {
         this.endereco = endereco;
+        return this;
     }
 
-    public static String getEnderecoId() {
-        return ENDERECO_ID;
+    public static Pedido create(Realm realm){
+        return realm.createObject(Pedido.class, getNextPrimaryKey(realm, Pedido.class));
     }
 }

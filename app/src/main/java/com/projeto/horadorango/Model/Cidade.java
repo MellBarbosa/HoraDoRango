@@ -1,66 +1,58 @@
-package com.projeto.horadorango.Model;
+package com.projeto.horadorango.model;
 
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.table.DatabaseTable;
 
-import java.io.Serializable;
+import io.realm.Realm;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
+import static com.projeto.horadorango.util.RealmUtil.getNextPrimaryKey;
 
 /**
  * Created by Mell on 24/10/2016.
  */
-@DatabaseTable(tableName = "CIDADE")
-public class Cidade implements Serializable {
+public class Cidade extends RealmObject {
 
-    public final static String ID = "id";
-    public final static String DESCRICAO = "descricao";
-    public final static String UF = "uf";
+    @PrimaryKey
+    private int id;
 
-    @DatabaseField(columnName = ID, id = true)
-    private long id;
-
-    @DatabaseField(columnName = DESCRICAO)
     private String descricao;
 
-    @DatabaseField(columnName = UF)
     private String uf;
 
-    public Cidade(){
-
-    }
-
-    public static String getID() {
-        return ID;
-    }
-
-    public static String getDESCRICAO() {
-        return DESCRICAO;
-    }
-
-    public static String getUF() {
-        return UF;
-    }
-
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public Cidade setId(int id) {
         this.id = id;
+        return this;
     }
 
     public String getDescricao() {
         return descricao;
     }
 
-    public void setDescricao(String descricao) {
+    public Cidade setDescricao(String descricao) {
         this.descricao = descricao;
+        return this;
     }
 
     public String getUf() {
         return uf;
     }
 
-    public void setUf(String uf) {
+    public Cidade setUf(String uf) {
         this.uf = uf;
+        return this;
     }
+
+    @Override
+    public String toString(){
+        return descricao;
+    }
+
+    public static Cidade create(Realm realm){
+        return realm.createObject(Cidade.class, getNextPrimaryKey(realm, Cidade.class));
+    }
+
 }

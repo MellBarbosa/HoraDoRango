@@ -1,142 +1,102 @@
-package com.projeto.horadorango.Model;
+package com.projeto.horadorango.model;
 
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.table.DatabaseTable;
+import android.support.v7.view.menu.MenuPresenter;
 
-import java.io.Serializable;
+import io.realm.Realm;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
+import static com.projeto.horadorango.util.RealmUtil.getNextPrimaryKey;
 
 /**
  * Created by Mell on 24/10/2016.
  */
-@DatabaseTable(tableName = "EMPRESA")
-public class Empresa implements Serializable {
+public class Empresa extends RealmObject {
 
-    public final static String ID = "id";
-    public final static String NOME_FANTASIA = "nome_fantasia";
-    public final static String HORARIO_FUNC = "horario_func";
-    public final static String TEL1 = "tel1";
-    public final static String TEL2 = "tel2";
-    public final static String TEL3 = "tel3";
-    public final static String HORARIO_ENTREGA = "horario_entrega";
-    public final static String TAXA_ENTREGA = "taxa_entrega";
 
-    @DatabaseField(columnName = ID, id = true, generatedId = true)
-    private long id;
-
-    @DatabaseField(columnName = NOME_FANTASIA)
+    @PrimaryKey
+    private int id;
     private String nome_fantasia;
-
-    @DatabaseField(columnName = HORARIO_FUNC)
     private String horario_func;
-
-    @DatabaseField(columnName = TEL1)
     private String tel1;
-
-    @DatabaseField(columnName = TEL2)
     private String tel2;
-
-    @DatabaseField(columnName = TEL3)
     private String tel3;
-
-    @DatabaseField(columnName = HORARIO_ENTREGA)
     private String horario_entrega;
+    private double taxa_entrega;
 
-    @DatabaseField(columnName = TAXA_ENTREGA)
-    private String taxa_entrega;
-
-    public static String getID() {
-        return ID;
-    }
-
-    public static String getNomeFantasia() {
-        return NOME_FANTASIA;
-    }
-
-    public static String getHorarioFunc() {
-        return HORARIO_FUNC;
-    }
-
-    public static String getTEL1() {
-        return TEL1;
-    }
-
-    public static String getTEL2() {
-        return TEL2;
-    }
-
-    public static String getTEL3() {
-        return TEL3;
-    }
-
-    public static String getHorarioEntrega() {
-        return HORARIO_ENTREGA;
-    }
-
-    public static String getTaxaEntrega() {
-        return TAXA_ENTREGA;
-    }
-
-    public long getId() {
+    public int getId(){
         return id;
     }
 
-    public void setId(long id) {
+    public Empresa setId(int id){
         this.id = id;
+        return this;
     }
 
     public String getNome_fantasia() {
         return nome_fantasia;
     }
 
-    public void setNome_fantasia(String nome_fantasia) {
+    public Empresa setNome_fantasia(String nome_fantasia){
         this.nome_fantasia = nome_fantasia;
+        return this;
     }
 
     public String getHorario_func() {
         return horario_func;
     }
 
-    public void setHorario_func(String horario_func) {
+    public Empresa setHorario_func(String horario_func){
         this.horario_func = horario_func;
+        return this;
     }
 
     public String getTel1() {
         return tel1;
     }
 
-    public void setTel1(String tel1) {
+    public Empresa setTel1(String tel1){
         this.tel1 = tel1;
+        return this;
     }
 
     public String getTel2() {
         return tel2;
     }
 
-    public void setTel2(String tel2) {
+    public Empresa setTel2(String tel2){
         this.tel2 = tel2;
+        return this;
     }
 
     public String getTel3() {
         return tel3;
     }
 
-    public void setTel3(String tel3) {
+    public Empresa setTel3(String tel3){
         this.tel3 = tel3;
+        return this;
     }
 
     public String getHorario_entrega() {
         return horario_entrega;
     }
 
-    public void setHorario_entrega(String horario_entrega) {
+    public Empresa setHorario_entrega(String horario_entrega){
         this.horario_entrega = horario_entrega;
+        return this;
     }
 
-    public String getTaxa_entrega() {
+    public double getTaxa_entrega() {
         return taxa_entrega;
     }
 
-    public void setTaxa_entrega(String taxa_entrega) {
+    public void setTaxa_entrega(double taxa_entrega) {
         this.taxa_entrega = taxa_entrega;
     }
+
+    public static Empresa create(Realm realm){
+        return realm.createObject(Empresa.class, getNextPrimaryKey(realm, Empresa.class));
+    }
+
 }

@@ -1,4 +1,4 @@
-package com.projeto.horadorango.Util;
+package com.projeto.horadorango.util;
 
 /**
  * Created by Mell on 27/10/2016.

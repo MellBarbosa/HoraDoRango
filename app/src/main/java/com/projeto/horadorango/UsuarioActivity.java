@@ -1,16 +1,14 @@
 package com.projeto.horadorango;
 
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
-import com.projeto.horadorango.Model.Usuario;
+import com.projeto.horadorango.model.Usuario;
 
 public class UsuarioActivity extends AppCompatActivity {
 
@@ -60,7 +58,7 @@ public class UsuarioActivity extends AppCompatActivity {
             edtEmail.setText(usuario.getEmail());
             edtTelefone.setText(usuario.getTelefone());
             edtSenha.setText(usuario.getSenha());
-            chkTermos.setText(usuario.getTermos());
+         //   chkTermos.setText(usuario.getTermos());
         }
         else{
             novo = true;

@@ -1,72 +1,63 @@
-package com.projeto.horadorango.Adapter;
+package com.projeto.horadorango.adapter;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.projeto.horadorango.Model.Empresa;
+import com.projeto.horadorango.model.Empresa;
 import com.projeto.horadorango.R;
+import com.projeto.horadorango.model.Produto;
 
 import java.util.ArrayList;
 
-public class EmpresaAdapter extends BaseAdapter {
+import io.realm.OrderedRealmCollection;
+import io.realm.RealmBaseAdapter;
 
-    private ArrayList<Empresa> listaEmpresas;
-    private Context contexto;
+public class EmpresaAdapter extends RealmBaseAdapter<Empresa> implements ListAdapter {
 
-    public EmpresaAdapter(Context c, ArrayList<Empresa> ep){
-        contexto = c;
-        listaEmpresas = ep;
-    }
+    private LayoutInflater layoutInflater;
 
-    @Override
-    public int getCount() {
-        return listaEmpresas.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return listaEmpresas.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return listaEmpresas.get(position).getId();
+    public EmpresaAdapter(Context context, OrderedRealmCollection<Empresa> realmResults){
+        super(context, realmResults);
+        layoutInflater = LayoutInflater.from(context);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View row = convertView;
-        EmpresaHolder holder = null;
+        ViewHolder holder;
+
         if (row == null){
 
-            LayoutInflater Inflater = LayoutInflater.from(contexto);
-            row = Inflater.inflate(R.layout.activity_empresa_adapter, parent, false);
+            row = layoutInflater.inflate(R.layout.activity_empresa_adapter, parent, false);
 
-            holder = new EmpresaHolder();
+            holder = new ViewHolder();
             holder.tvEmpresa = (TextView)row.findViewById(R.id.tvEmpresa);
             holder.tvHorarioEntrega = (TextView)row.findViewById(R.id.tvHorarioEntrega);
             holder.tvPratoDia = (TextView)row.findViewById(R.id.tvPratoDia);
             row.setTag(holder);
         }
         else{
-            holder = (EmpresaHolder)row.getTag();
+            holder = (ViewHolder)row.getTag();
         }
-        Empresa e = listaEmpresas.get(position);
-        //preenchendo o textview
-        holder.tvEmpresa.setText(e.getNome_fantasia());
-  //      holder.tvPratoDia.setText(e.());
-        holder.tvHorarioEntrega.setText(e.getHorario_entrega());
+        Empresa empresa = getItem(position);
+
+   //     holder.tvEmpresa.setText(produto.getEmpresa().getNome_fantasia());
+  //      holder.tvHorarioEntrega.setText(produto.getEmpresa().getHorario_func());
+  //      holder.tvPratoDia.setText(produto.getDescricao());
+
+        holder.tvEmpresa.setText(empresa.getNome_fantasia());
+        holder.tvHorarioEntrega.setText(empresa.getHorario_entrega());
+
         return row;
     }
 
-    class EmpresaHolder{
+    class ViewHolder{
         TextView tvPratoDia, tvHorarioEntrega, tvEmpresa;
     }
 

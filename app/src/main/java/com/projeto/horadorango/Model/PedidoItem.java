@@ -1,94 +1,68 @@
-package com.projeto.horadorango.Model;
+package com.projeto.horadorango.model;
 
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.table.DatabaseTable;
+import io.realm.Realm;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
-import java.io.Serializable;
-
+import static com.projeto.horadorango.util.RealmUtil.getNextPrimaryKey;
 /**
  * Created by Mell on 25/10/2016.
  */
-@DatabaseTable(tableName = "PEDIDO_ITEM")
-public class PedidoItem implements Serializable {
+public class PedidoItem extends RealmObject {
 
-    public final static String ID = "id";
-    public final static String PEDIDO_ID = "pedido_id";
-    public final static String PRODUTO_ID = "produto_id";
-    public final static String QUANTIDADE = "quantidade";
-    public final static String VALOR_ITEM = "valor_item";
-
-    @DatabaseField(columnName = ID, id = true)
-    private long id;
-
-    @DatabaseField(columnName = PEDIDO_ID, foreign = true, foreignAutoRefresh = true)
+    @PrimaryKey
+    private int id;
     private Pedido pedido;
-
-    @DatabaseField(columnName = PRODUTO_ID, foreign = true, foreignAutoRefresh = true)
     private Produto produto;
-
-    @DatabaseField(columnName = QUANTIDADE)
     private int quantidade;
-
-    @DatabaseField(columnName = VALOR_ITEM)
     private double valor_item;
 
-    public static String getID() {
-        return ID;
-    }
-
-    public static String getPedidoId() {
-        return PEDIDO_ID;
-    }
-
-    public static String getProdutoId() {
-        return PRODUTO_ID;
-    }
-
-    public static String getQUANTIDADE() {
-        return QUANTIDADE;
-    }
-
-    public static String getValorItem() {
-        return VALOR_ITEM;
-    }
-
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public PedidoItem setId(int id) {
         this.id = id;
+        return this;
     }
 
     public Pedido getPedido() {
         return pedido;
     }
 
-    public void setPedido(Pedido pedido) {
+    public PedidoItem setPedido(Pedido pedido) {
         this.pedido = pedido;
+        return this;
     }
 
     public Produto getProduto() {
         return produto;
     }
 
-    public void setProduto(Produto produto) {
+    public PedidoItem setProduto(Produto produto) {
         this.produto = produto;
+        return this;
     }
 
     public int getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public PedidoItem setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+        return this;
     }
 
     public double getValor_item() {
         return valor_item;
     }
 
-    public void setValor_item(double valor_item) {
+    public PedidoItem setValor_item(double valor_item) {
         this.valor_item = valor_item;
+        return this;
+    }
+
+    public static PedidoItem create(Realm realm){
+        return realm.createObject(PedidoItem.class, getNextPrimaryKey(realm, PedidoItem.class));
     }
 }

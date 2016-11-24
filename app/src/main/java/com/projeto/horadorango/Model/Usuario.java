@@ -1,104 +1,85 @@
-package com.projeto.horadorango.Model;
+package com.projeto.horadorango.model;
 
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.stmt.PreparedUpdate;
 import com.j256.ormlite.table.DatabaseTable;
 
 import java.io.Serializable;
 
+import io.realm.Realm;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
+import static com.projeto.horadorango.util.RealmUtil.getNextPrimaryKey;
+
 /**
  * Created by Mell on 24/10/2016.
  */
-@DatabaseTable(tableName = "USUARIO")
-public class Usuario implements Serializable {
+public class Usuario extends RealmObject {
 
-    public final static String ID = "id";
-    public final static String LOGIN = "login";
-    public final static String TELEFONE = "telefone";
-    public final static String EMAIL = "email";
-    public final static  String SENHA = "senha";
-    public final static String TERMOS = "termos";
 
-    @DatabaseField(columnName = ID, id = true)
-    private long id;
-
-    @DatabaseField(columnName = LOGIN)
+    @PrimaryKey
+    private int id;
     private String login;
-
-    @DatabaseField(columnName = TELEFONE)
     private String telefone;
-
-    @DatabaseField(columnName = EMAIL)
     private String email;
-
-    @DatabaseField(columnName = SENHA)
     private String senha;
-
-    @DatabaseField(columnName = TERMOS)
     private boolean termos;
 
-    public static String getID() {
-        return ID;
-    }
-
-    public static String getLOGIN() {
-        return LOGIN;
-    }
-
-    public static String getTELEFONE() {
-        return TELEFONE;
-    }
-
-    public static String getEMAIL() {
-        return EMAIL;
-    }
-
-    public static String getSENHA() {
-        return SENHA;
-    }
-
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public Usuario setId(int id){
         this.id = id;
+        return this;
     }
 
     public String getLogin() {
         return login;
     }
 
-    public void setLogin(String login) {
+    public Usuario setLogin(String login){
         this.login = login;
+        return this;
     }
 
     public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(String telefone) {
+    public Usuario setTelefone(String telefone){
         this.telefone = telefone;
+        return this;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public Usuario setEmail(String email){
         this.email = email;
+        return this;
     }
 
     public String getSenha() {
         return senha;
     }
 
-    public void setSenha(String senha) {
+    public Usuario setSenha(String senha){
         this.senha = senha;
+        return this;
+    }
+    public boolean isTermos() {
+        return termos;
     }
 
-    public static String getTermos() { return TERMOS; }
+    public Usuario setTermos(boolean termos){
+        this.termos = termos;
+        return this;
+    }
 
-    public boolean isTermos() { return termos; }
-
-    public void setTermos(boolean termos) { this.termos = termos; }
+    public static Usuario create(Realm realm){
+        return realm.createObject(Usuario.class, getNextPrimaryKey(realm,Usuario.class));
+    }
 }

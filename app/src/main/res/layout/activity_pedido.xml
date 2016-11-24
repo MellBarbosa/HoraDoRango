@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_pedido"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.projeto.horadorango.PedidoActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:id="@+id/textView14"
+        android:padding="60dp"
+        android:background="@color/colorAccent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="96dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="15dp"
+        android:id="@+id/tvEmpresa"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textStyle="normal|bold"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:padding="4dp" />
+
+    <TextView
+        android:text="Horário Func.:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvEmpresa"
+        android:layout_alignLeft="@+id/tvEmpresa"
+        android:layout_alignStart="@+id/tvEmpresa"
+        android:id="@+id/textView18"
+        android:textColor="@color/black"
+        android:textStyle="normal|bold" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:layout_alignTop="@+id/tvEmpresa"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/iv_LogoEmpresa"
+        android:layout_toLeftOf="@+id/textView18"
+        android:layout_toStartOf="@+id/textView18"
+        android:layout_alignBottom="@+id/TextView" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvEmpresa"
+        android:layout_toRightOf="@+id/textView18"
+        android:id="@+id/tvHorarioFunc"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:text="Horários Entrega:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView27"
+        android:layout_below="@+id/textView18"
+        android:layout_toRightOf="@+id/iv_LogoEmpresa"
+        android:layout_toEndOf="@+id/iv_LogoEmpresa"
+        android:textColor="@color/black"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvHorarioFunc"
+        android:layout_toRightOf="@+id/textView27"
+        android:id="@+id/tvHorariosEntrega"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:text="Tel.:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TextView"
+        android:textStyle="normal|bold"
+        android:textColor="@color/black"
+        android:layout_below="@+id/textView27"
+        android:layout_toRightOf="@+id/iv_LogoEmpresa"
+        android:layout_toEndOf="@+id/iv_LogoEmpresa" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvTelefones"
+        android:textColor="@color/black"
+        android:layout_alignBaseline="@+id/TextView"
+        android:layout_alignBottom="@+id/TextView"
+        android:layout_toRightOf="@+id/TextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_LogoEmpresa"
+        android:id="@+id/tvEnderecoEmpresa"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="@color/black"
+        android:layout_toRightOf="@+id/textView30"
+        android:layout_toEndOf="@+id/textView30" />
+
+    <TextView
+        android:text="Endereço:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView30"
+        android:textStyle="normal|bold"
+        android:textColor="@color/black"
+        android:layout_below="@+id/iv_LogoEmpresa"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textView14"
+        android:layout_toStartOf="@+id/tvHorariosEntrega"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/ProdutosEmpresaListView" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="normal"
+        app:srcCompat="@drawable/ic_cart"
+        android:id="@+id/fabProdEmp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="11dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="12dp" />
+
+</RelativeLayout>

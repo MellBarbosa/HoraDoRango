@@ -16,7 +16,7 @@
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/lvEnderecos" />
+        android:id="@+id/endereco_listview" />
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"

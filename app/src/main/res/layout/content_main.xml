@@ -19,5 +19,5 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/lvEmpresas" />
+        android:id="@+id/empresaListView" />
 </RelativeLayout>

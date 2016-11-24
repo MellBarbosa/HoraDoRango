@@ -1,88 +1,71 @@
-package com.projeto.horadorango.Model;
+package com.projeto.horadorango.model;
 
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.table.DatabaseTable;
+import io.realm.Realm;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
-import java.io.Serializable;
+import static com.projeto.horadorango.util.RealmUtil.getNextPrimaryKey;
 
 /**
  * Created by Mell on 24/10/2016.
  */
-@DatabaseTable(tableName = "PRODUTO")
-public class Produto implements Serializable {
+public class Produto extends RealmObject {
 
-    public final static String ID = "id";
-    public final static String DESCRICAO = "descricao";
-    public final static String VALOR = "valor";
-    public final static String CATEGORIA_ID = "categoria_id";
-    public final static String EMPRESA_ID = "empresa_id";
-
-    @DatabaseField(columnName = ID, id = true)
-    private long id;
-
-    @DatabaseField(columnName = DESCRICAO)
+    @PrimaryKey
+    private int id;
     private String descricao;
-
-    @DatabaseField(columnName = VALOR)
     private double valor;
-
-    @DatabaseField(columnName = CATEGORIA_ID, foreign = true, foreignAutoRefresh = true)
     private Categoria categoria;
-
-    @DatabaseField(columnName = EMPRESA_ID, foreign = true, foreignAutoRefresh = true)
     private Empresa empresa;
 
-    public static String getID() {
-        return ID;
-    }
-
-    public static String getDESCRICAO() {
-        return DESCRICAO;
-    }
-
-    public static String getVALOR() {
-        return VALOR;
-    }
-
-    public static String getCategoriaId() {
-        return CATEGORIA_ID;
-    }
-
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public Produto setId(int id){
         this.id = id;
+        return this;
     }
 
     public String getDescricao() {
         return descricao;
     }
 
-    public void setDescricao(String descricao) {
+    public Produto setDescricaco(String descricaco){
         this.descricao = descricao;
+        return this;
     }
 
     public double getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public Produto setValor(double valor){
         this.valor = valor;
+        return this;
     }
 
     public Categoria getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(Categoria categoria) {
+    public Produto setCategoria(Categoria categoria){
         this.categoria = categoria;
+        return this;
     }
 
-    public static String getEmpresaId() { return EMPRESA_ID;   }
+    public Empresa getEmpresa() {
+        return empresa;
+    }
 
-    public Empresa getEmpresa() { return empresa; }
+    public Produto setEmpresa(Empresa empresa){
+        this.empresa = empresa;
+        return this;
+    }
 
-    public void setEmpresa(Empresa empresa) { this.empresa = empresa; }
+
+    public static Produto create(Realm realm){
+        return realm.createObject(Produto.class, getNextPrimaryKey(realm, Produto.class));
+    }
+
 }
