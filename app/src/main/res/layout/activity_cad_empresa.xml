@@ -147,14 +147,20 @@
         android:layout_alignEnd="@+id/edtHorarioEntrega"
         android:id="@+id/edtTaxaEntrega" />
 
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtTaxaEntrega"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/spEndereco" />
+
     <Button
         android:text="Gravar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/edtTaxaEntrega"
-        android:layout_toRightOf="@+id/textView31"
-        android:layout_toEndOf="@+id/textView31"
-        android:layout_marginLeft="12dp"
-        android:layout_marginStart="12dp"
-        android:id="@+id/btGravarEmpresa" />
+        android:id="@+id/btGravarEmpresa"
+        android:layout_below="@+id/spEndereco"
+        android:layout_alignRight="@+id/edtTaxaEntrega"
+        android:layout_alignEnd="@+id/edtTaxaEntrega" />
 </RelativeLayout>

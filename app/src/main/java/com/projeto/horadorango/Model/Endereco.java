@@ -21,7 +21,6 @@ public class Endereco extends RealmObject{
     private String complemento;
     private Cidade cidade;
     private Usuario usuario;
-    private Empresa empresa;
     private String ponto_referencia;
 
     public long getId() {
@@ -96,15 +95,6 @@ public class Endereco extends RealmObject{
         return this;
     }
 
-    public Empresa getEmpresa() {
-        return empresa;
-    }
-
-    public Endereco setEmpresa(Empresa empresa){
-        this.empresa = empresa;
-        return this;
-    }
-
     public String getPonto_referencia() {
         return ponto_referencia;
     }
@@ -112,6 +102,10 @@ public class Endereco extends RealmObject{
     public Endereco setPonto_referencia(String ponto_referencia){
         this.ponto_referencia = ponto_referencia;
         return this;
+    }
+
+    public String toString(){
+        return endereco;
     }
 
     public static Endereco create(Realm realm){

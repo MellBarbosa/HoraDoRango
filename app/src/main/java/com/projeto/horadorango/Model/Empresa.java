@@ -23,6 +23,7 @@ public class Empresa extends RealmObject {
     private String tel3;
     private String horario_entrega;
     private double taxa_entrega;
+    private Endereco endereco;
 
     public int getId(){
         return id;
@@ -101,6 +102,15 @@ public class Empresa extends RealmObject {
 
     public String toString(){
         return nome_fantasia;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public Empresa setEndereco(Endereco endereco){
+        this.endereco = endereco;
+        return this;
     }
 
 }

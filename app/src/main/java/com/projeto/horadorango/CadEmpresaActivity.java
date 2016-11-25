@@ -32,6 +32,7 @@ public class CadEmpresaActivity extends AppCompatActivity {
     private EditText edtHorarioEntrega;
     private EditText edtTaxaEntrega;
     private Button btGravarEmpresa;
+    private Spinner spEndereco;
 
 
     @Override
@@ -52,6 +53,7 @@ public class CadEmpresaActivity extends AppCompatActivity {
         edtHorarioEntrega = (EditText)findViewById(R.id.edtHorarioEntrega);
         edtTaxaEntrega = (EditText)findViewById(R.id.edtTaxaEntrega);
         btGravarEmpresa = (Button)findViewById(R.id.btGravarEmpresa);
+        spEndereco = (Spinner)findViewById(R.id.spEndereco);
 
         btGravarEmpresa.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -60,6 +62,11 @@ public class CadEmpresaActivity extends AppCompatActivity {
         });
 
         realm = Realm.getDefaultInstance();
+
+        ArrayAdapter enderecoAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item,
+                Realm.getDefaultInstance().where(Endereco.class).findAll());
+        spEndereco.setAdapter(enderecoAdapter);
 
         final int id;
 
@@ -77,6 +84,12 @@ public class CadEmpresaActivity extends AppCompatActivity {
             edttel3.setText(empresa.getTel3());
             edtHorarioEntrega.setText(empresa.getHorario_entrega());
             edtTaxaEntrega.setText((int)empresa.getTaxa_entrega());
+
+            for (int i = 0; i < spEndereco.getAdapter().getCount(); i++) {
+                Endereco endereco = (Endereco) spEndereco.getAdapter().getItem(i);
+                if (endereco.getId() == empresa.getEndereco().getId())
+                    spEndereco.setSelection(i);
+            }
         }
     }
 

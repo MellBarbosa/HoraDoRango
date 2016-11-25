@@ -6,10 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextClock;
 import android.widget.TextView;
 
+import com.projeto.horadorango.adapter.ProdutoAdapter;
 import com.projeto.horadorango.model.Empresa;
 import com.projeto.horadorango.model.Endereco;
 import com.projeto.horadorango.model.Produto;
@@ -24,12 +26,16 @@ public class PedidoActivity extends AppCompatActivity implements View.OnClickLis
     private Empresa empresa;
     private Produto produto;
     private Endereco endereco;
+    private ProdutoAdapter produtoAdapter;
 
     private TextView tvEmpresa;
     private TextView tvHorarioFunc;
     private TextView tvHorariosEntrega;
     private TextView tvEndereco;
     private TextView tvTelefones;
+    private ImageView ivMenos;
+    private ImageView ivMais;
+    private TextView tvQuantidade;
 
 
     @Override
@@ -51,22 +57,41 @@ public class PedidoActivity extends AppCompatActivity implements View.OnClickLis
         tvHorariosEntrega = (TextView)findViewById(R.id.tvHorariosEntrega);
         tvEndereco = (TextView)findViewById(R.id.tvEndereco);
         tvTelefones = (TextView)findViewById(R.id.tvTelefones);
+        ivMenos = (ImageView)findViewById(R.id.ivMenos);
+        ivMais = (ImageView)findViewById(R.id.ivMais);
 
         final int id;
 
         id = getIntent().getExtras().getInt(EXTRA_ID, 0);
 
         if (id > 0) {
+            realm = Realm.getDefaultInstance();
             empresa = realm.where(Empresa.class).equalTo("id", id).findFirst();
             tvEmpresa.setText(empresa.getNome_fantasia());
             tvHorarioFunc.setText(empresa.getHorario_func());
             tvHorariosEntrega.setText(empresa.getHorario_entrega());
-            // concatenar os 3 telefones
             tvTelefones.setText(empresa.getTel1()+ "; " +empresa.getTel2()+ "; " +empresa.getTel3());
-            // buscar o endereco desta empresa concatenado com bairro, numero, complemento
-            tvEndereco.setText(endereco.getEndereco());
+         //   tvEndereco.setText(empresa.getEndereco().getEndereco() + ',' + empresa.getEndereco().getNumero() + ',' + empresa.getEndereco().getComplemento() + ',' + empresa.getEndereco().getBairro().getDescricao() );
         }
 
+        ListView produtosEmpresaListView = (ListView) findViewById(R.id.ProdutosEmpresaListView);
+
+        produtoAdapter = new ProdutoAdapter(this, realm.where(Produto.class).equalTo("empresa.id", id).findAll());
+        produtosEmpresaListView.setAdapter(produtoAdapter);
+
+     /*   ivMenos.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                if (!(tvQuantidade.getText().equals(0))) {
+                     tvQuantidade.setText(Integer.parseInt(tvQuantidade.getText().toString()) - 1);
+                }
+            }
+        });
+
+        ivMais.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                tvQuantidade.setText(Integer.parseInt(tvQuantidade.getText().toString()) + 1);
+            }
+        });  */
 
     }
 

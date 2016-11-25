@@ -5,60 +5,64 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import com.projeto.horadorango.model.Produto;
 import com.projeto.horadorango.R;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
-public class ProdutoAdapter extends BaseAdapter {
+import io.realm.OrderedRealmCollection;
+import io.realm.RealmBaseAdapter;
 
-    private ArrayList<Produto> listaProdutos;
-    private Context contexto;
 
-    public ProdutoAdapter(Context c, ArrayList<Produto> lp){
-        contexto = c;
-        listaProdutos = lp;
-    }
-    @Override
-    public int getCount() {
-        return listaProdutos.size();
-    }
+public class ProdutoAdapter extends RealmBaseAdapter<Produto> implements ListAdapter {
 
-    @Override
-    public Object getItem(int position) {
-        return listaProdutos.get(position);
-    }
+    private  LayoutInflater layoutInflater;
 
-    @Override
-    public long getItemId(int position) {
-        return listaProdutos.get(position).getId();
+    public ProdutoAdapter(Context context, OrderedRealmCollection<Produto> realmResults){
+        super(context, realmResults);
+        layoutInflater = LayoutInflater.from(context);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         View row = convertView;
-        ProdutoHolder holder = null;
-        if(row == null){
-            LayoutInflater Inflater = LayoutInflater.from(contexto);
-            row = Inflater.inflate(R.layout.activity_produto_adapter, parent, false);
+        ProdutoAdapter.ViewHolder holder;
 
-            holder = new ProdutoHolder();
+        if (row == null){
+            row = layoutInflater.inflate(R.layout.activity_endereco_adapter, parent, false);
+
+            holder = new ProdutoAdapter.ViewHolder();
+            holder.tvCategoria = (TextView)row.findViewById(R.id.tvCategoria);
             holder.tvProduto = (TextView)row.findViewById(R.id.tvProduto);
+            holder.tvQuantidade = (TextView)row.findViewById(R.id.tvQuantidade);
+
             row.setTag(holder);
         }
-        else {
-            holder = (ProdutoHolder) row.getTag();
+        else{
+            holder = (ProdutoAdapter.ViewHolder)row.getTag();
         }
-        Produto p = listaProdutos.get(position);
+
+        Produto p = getItem(position);
+        //preenchendo o textview
         holder.tvProduto.setText(p.getDescricao());
-        return  row;
+    //    holder.tvQuantidade.setText(0);
+        holder.tvCategoria.setText(p.getCategoria().getDescricao());
+        if (position > 0 && getItem(position - 1).getCategoria() != p.getCategoria() ) {
+            holder.tvCategoria.setText(p.getCategoria().getDescricao());
+            holder.tvCategoria.setVisibility(View.VISIBLE);
+        } else {
+            holder.tvCategoria.setVisibility(View.GONE);
+        }
+        return row;
     }
 
-
-    class ProdutoHolder{
-        TextView tvProduto;
+    class ViewHolder{
+        TextView tvCategoria, tvProduto, tvQuantidade;
     }
 }

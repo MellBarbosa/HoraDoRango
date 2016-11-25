@@ -24,6 +24,7 @@ import io.realm.Realm;
             setContentView(R.layout.activity_lista_enderecos);
 
             if (getSupportActionBar() != null) {
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 getSupportActionBar().setTitle("Meus Endereços");
             }
 
