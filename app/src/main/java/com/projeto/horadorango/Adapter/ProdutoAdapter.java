@@ -35,7 +35,7 @@ public class ProdutoAdapter extends RealmBaseAdapter<Produto> implements ListAda
         ProdutoAdapter.ViewHolder holder;
 
         if (row == null){
-            row = layoutInflater.inflate(R.layout.activity_endereco_adapter, parent, false);
+            row = layoutInflater.inflate(R.layout.activity_produto_adapter, parent, false);
 
             holder = new ProdutoAdapter.ViewHolder();
             holder.tvCategoria = (TextView)row.findViewById(R.id.tvCategoria);
@@ -51,8 +51,9 @@ public class ProdutoAdapter extends RealmBaseAdapter<Produto> implements ListAda
         Produto p = getItem(position);
         //preenchendo o textview
         holder.tvProduto.setText(p.getDescricao());
-    //    holder.tvQuantidade.setText(0);
-        holder.tvCategoria.setText(p.getCategoria().getDescricao());
+   //     holder.tvQuantidade.setText('0');
+    //    holder.tvCategoria.setText(p.getCategoria().getDescricao());
+
         if (position > 0 && getItem(position - 1).getCategoria() != p.getCategoria() ) {
             holder.tvCategoria.setText(p.getCategoria().getDescricao());
             holder.tvCategoria.setVisibility(View.VISIBLE);

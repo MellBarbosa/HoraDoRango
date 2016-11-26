@@ -1,4 +1,4 @@
-package com.projeto.horadorango.Sincronizacao;
+package com.projeto.horadorango.sincronizacao;
 
 /**
  * Created by Mell on 23/11/2016.
