@@ -20,6 +20,10 @@ android {
     }
 }
 
+repositories{
+    mavenCentral()
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:24.2.1'
@@ -28,6 +32,8 @@ dependencies {
     compile 'com.j256.ormlite:ormlite-android:5.0'
     compile 'com.android.support:support-v4:24.2.1'
     compile 'io.realm:android-adapters:1.4.0'
+    compile 'com.facebook.android:facebook-android-sdk:4.+'
+    compile 'com.google.code.gson:gson:2.2.4'
 
     testCompile 'junit:junit:4.12'
 

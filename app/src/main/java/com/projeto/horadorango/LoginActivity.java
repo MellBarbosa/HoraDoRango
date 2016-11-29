@@ -1,45 +1,57 @@
 package com.projeto.horadorango;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.view.ViewGroup;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 
+import static com.projeto.horadorango.R.id.loginButton;
 
-    private EditText edtLogin;
-    private EditText edtSenha;
-    private TextView tvEsqueciSenha;
-    private Button btLogin;
-    private Button btCadastrar;
+public class LoginActivity extends AppCompatActivity {
 
+    CallbackManager callbackManager;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        FacebookSdk.sdkInitialize(this.getApplicationContext());
 
+        callbackManager = CallbackManager.Factory.create();
 
-        edtLogin = (EditText) findViewById(R.id.edtLogin);
-        edtSenha = (EditText) findViewById(R.id.edtSenha);
-        tvEsqueciSenha = (TextView) findViewById(R.id.tvEsqueciSenha);
-        btLogin = (Button) findViewById(R.id.btLogin);
-        btCadastrar = (Button) findViewById(R.id.btCadastrar);
+        LoginManager.getInstance().registerCallback(callbackManager,
+                new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        // App code
+                    }
 
+                    @Override
+                    public void onCancel() {
+                        // App code
+                    }
 
+                    @Override
+                    public void onError(FacebookException exception) {
+                        // App code
+                    }
+                });
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btCadastrar:
-                Intent u = new Intent(this, UsuarioActivity.class);
-                startActivity(u);
-            case R.id.btLogin:
-
-        }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
+
+
 }

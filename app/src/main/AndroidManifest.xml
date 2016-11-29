@@ -38,7 +38,8 @@
         <activity android:name=".CarrinhoActivity" />
         <activity android:name=".PedidoActivity" />
         <activity android:name=".CadProdutoActivity" />
-        <activity android:name=".CadEmpresaActivity"></activity>
+        <activity android:name=".CadEmpresaActivity" />
+        <activity android:name=".sincronizacao.SincActivity"></activity>
     </application>
 
 </manifest>

@@ -2,6 +2,8 @@ package com.projeto.horadorango;
 
 import android.app.Application;
 
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 import com.projeto.horadorango.model.Bairro;
 import com.projeto.horadorango.model.Categoria;
 import com.projeto.horadorango.model.Cidade;
@@ -34,7 +36,11 @@ public class HoraDoRangoApp extends Application {
                 .build();
 
         Realm.setDefaultConfiguration(config);
+
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
     }
+
 
     private void initialData(Realm realm) {
 

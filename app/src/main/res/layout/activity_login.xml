@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
@@ -9,110 +10,26 @@
     android:paddingRight="3dp"
     android:paddingTop="3dp"
     tools:context="com.projeto.horadorango.LoginActivity"
-    android:background="@color/colorPrimary">
+    android:background="@color/black">
 
-    <EditText
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="numberPassword"
-        android:ems="10"
-        android:layout_below="@+id/edtLogin"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="56dp"
-        android:id="@+id/edtSenha"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:textColor="@color/colorAccent" />
-
-    <TextView
-        android:text="Senha:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edtLogin"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="24dp"
-        android:id="@+id/textView7"
-        android:textSize="18sp"
-        android:textColor="@color/colorAccent"
-        android:textStyle="normal|bold" />
-
-    <Button
-        android:text="Login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edtSenha"
-        android:layout_marginTop="12dp"
-        android:id="@+id/btLogin"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:textColor="@color/black"
-        android:backgroundTint="@color/colorAccent"
-        android:layout_toRightOf="@+id/tvEsqueciSenha"
-        android:layout_toEndOf="@+id/tvEsqueciSenha" />
-
-    <TextView
-        android:text="Login:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="52dp"
-        android:id="@+id/textView5"
-        android:textSize="18sp"
-        android:textColor="@color/colorAccent"
-        android:layout_above="@+id/edtSenha"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textStyle="normal|bold" />
-
-    <TextView
-        android:text="Esqueci minha senha?"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvEsqueciSenha"
-        android:textColor="@color/colorAccent"
-        android:layout_alignBaseline="@+id/btLogin"
-        android:layout_alignBottom="@+id/btLogin"
-        android:layout_toRightOf="@+id/textView7"
-        android:layout_toEndOf="@+id/textView7"
-        android:layout_marginLeft="30dp"
-        android:layout_marginStart="30dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_marginTop="162dp"
-        android:id="@+id/edtLogin"
-        android:inputType="text"
-        android:textColor="@color/colorAccent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <Button
-        android:text="Quero me Cadastrar!"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:elevation="4dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/btCadastrar"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:background="@color/colorAccent"
-        android:textColor="@color/black" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="70dp"
+        android:textSize="18sp" />
 
-    <TextView
-        android:text="Ainda não tem conta?"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="13dp"
-        android:id="@+id/textView9"
-        android:textColor="@color/colorAccent"
-        android:layout_above="@+id/btCadastrar"
-        android:layout_centerHorizontal="true" />
+        app:srcCompat="@drawable/splash_ic"
+        android:id="@+id/imageView3"
+        android:layout_above="@+id/loginButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="43dp" />
 
 </RelativeLayout>
