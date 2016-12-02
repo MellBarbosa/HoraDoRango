@@ -1,6 +1,11 @@
 package com.projeto.horadorango;
 
 import android.app.Application;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
+import android.util.Base64;
+import android.util.Log;
 
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
@@ -9,6 +14,9 @@ import com.projeto.horadorango.model.Categoria;
 import com.projeto.horadorango.model.Cidade;
 import com.projeto.horadorango.model.Empresa;
 import com.projeto.horadorango.model.Produto;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
@@ -39,6 +47,7 @@ public class HoraDoRangoApp extends Application {
                 .build();
 
         Realm.setDefaultConfiguration(config);
+
 
 
     }
