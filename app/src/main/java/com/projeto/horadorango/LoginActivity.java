@@ -48,25 +48,14 @@ public class LoginActivity extends AppCompatActivity {
         login_button = (LoginButton) findViewById(R.id.login_button);
         imgLogo = (ImageView) findViewById(R.id.imgLogo);
 
-         login_button.setOnClickListener(new View.OnClickListener() {
-
-           @Override
-            public void onClick(View v) {
-                // Call private method
-                onFblogin();
-            }
-        });
+        login_button.setReadPermissions(Arrays.asList("email", "public_profile"));
 
         callbackManager = CallbackManager.Factory.create();
-        LoginManager.getInstance().registerCallback(callbackManager,
+        login_button.registerCallback(callbackManager,
                 new FacebookCallback<LoginResult>() {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
-                        // App code
-                        //    Profile profile = Profile.getCurrentProfile();
-                        //   Log.e("fb", profile.getName());
-                        //   Log.e("fb", profile.getId());
-                        //    Log.e("fb", profile.getName());
+
                         GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
 
                             @Override
@@ -78,15 +67,17 @@ public class LoginActivity extends AppCompatActivity {
                                 try {
                                     Log.e("fb", object.getString("email"));
                                     Log.e("fb", object.getString("id"));
-                                    Log.e("fb", object.getString("first_name"));
+                                    Log.e("fb", object.getString("name"));
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
 
                             }
                         });
-
+                        Bundle parameters = new Bundle(); parameters.putString("fields", "id,name,email"); request.setParameters(parameters);
+                        request.executeAsync();
                     }
+
 
                     @Override
                     public void onCancel() {
@@ -96,18 +87,11 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onError(FacebookException exception) {
                         // App code
+                        exception.printStackTrace();
                     }
                 });
     }
 
-    private void onFblogin() {
-
-
-
-        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("email", "public_profile"));
-
-
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

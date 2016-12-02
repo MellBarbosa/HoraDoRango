@@ -79,20 +79,6 @@ public class PedidoActivity extends AppCompatActivity implements View.OnClickLis
         produtoAdapter = new ProdutoAdapter(this, realm.where(Produto.class).equalTo("empresa.id", id).findAll());
         produtosEmpresaListView.setAdapter(produtoAdapter);
 
-     /*   ivMenos.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v) {
-                if (!(tvQuantidade.getText().equals(0))) {
-                     tvQuantidade.setText(Integer.parseInt(tvQuantidade.getText().toString()) - 1);
-                }
-            }
-        });
-
-        ivMais.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v) {
-                tvQuantidade.setText(Integer.parseInt(tvQuantidade.getText().toString()) + 1);
-            }
-        });  */
-
     }
 
     @Override
