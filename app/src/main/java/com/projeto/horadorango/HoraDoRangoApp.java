@@ -23,6 +23,9 @@ public class HoraDoRangoApp extends Application {
     public void onCreate() {
         super.onCreate();
 
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
+
         Realm.init(this);
         RealmConfiguration config = new RealmConfiguration.Builder()
                 .name("hora-do-rango")
@@ -37,8 +40,7 @@ public class HoraDoRangoApp extends Application {
 
         Realm.setDefaultConfiguration(config);
 
-        FacebookSdk.sdkInitialize(getApplicationContext());
-        AppEventsLogger.activateApp(this);
+
     }
 
 

@@ -28,18 +28,6 @@
         android:layout_alignParentEnd="true"
         android:visibility="visible" />
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvProduto"
-        android:textSize="18sp"
-        android:layout_below="@+id/tvCategoria"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/ivMenos"
-        android:layout_toStartOf="@+id/ivMenos" />
-
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -71,5 +59,29 @@
         android:layout_below="@+id/tvCategoria"
         android:layout_toLeftOf="@+id/ivMais"
         android:layout_toStartOf="@+id/ivMais" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvProduto"
+        android:textSize="18sp"
+        android:layout_below="@+id/tvCategoria"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/tvValor"
+        android:layout_toStartOf="@+id/tvValor" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvValor"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_alignBaseline="@+id/tvProduto"
+        android:layout_alignBottom="@+id/tvProduto"
+        android:layout_toLeftOf="@+id/ivMenos"
+        android:textSize="18sp" />
 
 </RelativeLayout>

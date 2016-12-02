@@ -14,16 +14,24 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.projeto.horadorango.adapter.EmpresaAdapter;
-import com.projeto.horadorango.adapter.EnderecoAdapter;
-import com.projeto.horadorango.model.Empresa;
-import com.projeto.horadorango.model.Endereco;
+import com.projeto.horadorango.model.Categoria;
 import com.projeto.horadorango.model.Produto;
 
 import io.realm.Realm;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,  AdapterView.OnItemClickListener {
+
+    public static final String TAG = "LOG";
+    public static final String API = "http://localhost/simples/index.php/Api";
 
     private Realm realm;
     private EmpresaAdapter empresaAdapter;
@@ -105,7 +113,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_configuracoes) {
 
-            Intent nv = new Intent(this, CadProdutoActivity.class);
+            Intent nv = new Intent(this, LoginActivity.class);
             startActivity(nv);
 
         } else if (id == R.id.nav_contato) {
@@ -129,6 +137,7 @@ public class MainActivity extends AppCompatActivity
         intent.putExtra(PedidoActivity.EXTRA_ID, empresaAdapter.getItem(position).getEmpresa().getId());
         startActivity(intent);
     }
+
 
 
 }

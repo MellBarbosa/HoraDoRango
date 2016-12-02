@@ -1,8 +1,11 @@
 package com.projeto.horadorango.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import io.realm.Realm;
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -22,6 +25,7 @@ public class Pedido extends RealmObject {
     private Date hora_agend_entrega;
     private Date horario_entrega;
     private Endereco endereco;
+    private RealmList<PedidoItem> itens;
 
     public int getId() {
         return id;
@@ -92,6 +96,15 @@ public class Pedido extends RealmObject {
 
     public Pedido setEndereco(Endereco endereco) {
         this.endereco = endereco;
+        return this;
+    }
+
+    public List<PedidoItem> getItens() {
+        return itens;
+    }
+
+    public Pedido setItens(RealmList<PedidoItem> itens) {
+        this.itens = itens;
         return this;
     }
 

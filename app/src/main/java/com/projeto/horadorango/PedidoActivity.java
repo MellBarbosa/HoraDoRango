@@ -101,6 +101,7 @@ public class PedidoActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.fabProdEmp:
                 Intent ca = new Intent(this, CarrinhoActivity.class);
                 startActivity(ca);
+
                 break;
         }
     }
