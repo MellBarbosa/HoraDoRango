@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -27,6 +28,7 @@ import com.facebook.login.widget.LoginButton;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.security.KeyStore;
 import java.util.Arrays;
 
 import static com.projeto.horadorango.R.id.login_button;
@@ -36,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
     public static CallbackManager callbackManager;
     private LoginButton login_button;
     private ImageView imgLogo;
+    private int login;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -68,14 +71,26 @@ public class LoginActivity extends AppCompatActivity {
                                     Log.e("fb", object.getString("email"));
                                     Log.e("fb", object.getString("id"));
                                     Log.e("fb", object.getString("name"));
+                                    login = 0;
                                 } catch (JSONException e) {
                                     e.printStackTrace();
+                                    login = 1;
                                 }
 
                             }
                         });
                         Bundle parameters = new Bundle(); parameters.putString("fields", "id,name,email"); request.setParameters(parameters);
                         request.executeAsync();
+
+                        if (login == 0) {
+                        Intent main = new Intent();
+                        main.setClass(LoginActivity.this, MainActivity.class);
+                        startActivity(main);
+
+                        finish();
+
+                        }
+
                     }
 
 
