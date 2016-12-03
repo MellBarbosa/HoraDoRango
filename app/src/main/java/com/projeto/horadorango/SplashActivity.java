@@ -48,13 +48,13 @@ public class SplashActivity extends AppCompatActivity {
 
         for(int i =0; i < sincronizacao.getBairros().size() ;i++) {
             Bairro bairro = sincronizacao.getBairros().get(i);
-            bairro = realm.copyToRealm(bairro);
+            bairro = realm.copyToRealmOrUpdate(bairro);
             realm.insertOrUpdate(bairro);
         }
 
         for(int i =0; i < sincronizacao.getCidades().size() ;i++) {
             Cidade cidade = sincronizacao.getCidades().get(i);
-            cidade = realm.copyToRealm(cidade);
+            cidade = realm.copyToRealmOrUpdate(cidade);
             realm.insertOrUpdate(cidade);
         }
 
