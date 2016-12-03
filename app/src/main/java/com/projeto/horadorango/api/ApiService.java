@@ -6,6 +6,7 @@ import com.projeto.horadorango.model.Cidade;
 import com.projeto.horadorango.model.Empresa;
 import com.projeto.horadorango.model.Endereco;
 import com.projeto.horadorango.model.Produto;
+import com.projeto.horadorango.model.Sincronizacao;
 import com.projeto.horadorango.model.Usuario;
 
 import java.util.List;
@@ -22,6 +23,9 @@ public interface ApiService {
 
  //   @POST("/login")
  //   Call<Usuario> basicLogin();
+
+    @GET("api/sincronizar")
+    Call<Sincronizacao> sincronizar();
 
     @GET("api/bairro")
     Call<List<Bairro>> listaBairro();

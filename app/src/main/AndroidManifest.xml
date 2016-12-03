@@ -15,12 +15,11 @@
         android:icon="@drawable/ic_rango"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoActionBar">
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".SplashActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,7 +30,7 @@
         <activity android:name=".ListaEnderecosActivity" />
         <activity android:name=".UsuarioActivity" />
         <activity android:name=".EnderecoActivity" />
-        <activity android:name=".SplashActivity" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".FinalizaPedidoActivity" />
         <activity android:name=".CarrinhoActivity" />
         <activity android:name=".PedidoActivity" />

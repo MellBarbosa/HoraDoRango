@@ -1,6 +1,7 @@
 package com.projeto.horadorango.api;
 
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -19,9 +20,19 @@ public class ApiComunicator {
                     .baseUrl(API_BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create());
 
-    public static ApiService createService() {
+    private static ApiService createService() {
+        httpClient.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY));
         Retrofit retrofit = builder.client(httpClient.build()).build();
         return retrofit.create(ApiService.class);
+    }
+
+    private static ApiService api = null;
+
+    public static ApiService get(){
+        if(api == null){
+            api = createService();
+        }
+        return api;
     }
 
 }

@@ -8,6 +8,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,8 +18,13 @@ import android.widget.ListView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.projeto.horadorango.adapter.EmpresaAdapter;
+import com.projeto.horadorango.api.ApiComunicator;
+import com.projeto.horadorango.model.Bairro;
 import com.projeto.horadorango.model.Categoria;
 import com.projeto.horadorango.model.Produto;
+import com.projeto.horadorango.model.Sincronizacao;
+
+import java.util.List;
 
 import io.realm.Realm;
 import retrofit2.Call;

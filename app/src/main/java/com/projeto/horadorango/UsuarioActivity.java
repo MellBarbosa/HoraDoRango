@@ -56,8 +56,6 @@ public class UsuarioActivity extends AppCompatActivity {
             usuario = u;
             edtNome.setText(usuario.getLogin());
             edtEmail.setText(usuario.getEmail());
-            edtTelefone.setText(usuario.getTelefone());
-            edtSenha.setText(usuario.getSenha());
          //   chkTermos.setText(usuario.getTermos());
         }
         else{

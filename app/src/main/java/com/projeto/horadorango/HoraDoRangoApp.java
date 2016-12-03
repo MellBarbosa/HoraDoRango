@@ -59,13 +59,13 @@ public class HoraDoRangoApp extends Application {
         realm.insert(Categoria.create(realm).setDescricao("Bebidas"));
         realm.insert(Categoria.create(realm).setDescricao("Sobremesa"));
 
-        realm.insert(Bairro.create(realm).setDescricao("Centro"));
-        realm.insert(Bairro.create(realm).setDescricao("Niterói"));
-        realm.insert(Bairro.create(realm).setDescricao("Liberdade"));
+     //   realm.insert(Bairro.create(realm).setDescricao("Centro"));
+     //   realm.insert(Bairro.create(realm).setDescricao("Niterói"));
+     //   realm.insert(Bairro.create(realm).setDescricao("Liberdade"));
 
-        realm.insert(Cidade.create(realm).setDescricao("Divinópolis"));
-        realm.insert(Cidade.create(realm).setDescricao("Belo Horizonte"));
-        realm.insert(Cidade.create(realm).setDescricao("Rio de Janeiro"));
+     //   realm.insert(Cidade.create(realm).setDescricao("Divinópolis"));
+    //    realm.insert(Cidade.create(realm).setDescricao("Belo Horizonte"));
+    //    realm.insert(Cidade.create(realm).setDescricao("Rio de Janeiro"));
 
     }
 }
