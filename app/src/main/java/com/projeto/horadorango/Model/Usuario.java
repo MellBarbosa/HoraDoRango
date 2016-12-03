@@ -21,10 +21,8 @@ public class Usuario extends RealmObject {
     @PrimaryKey
     private int id;
     private String login;
-    private String telefone;
     private String email;
-    private String senha;
-    private boolean termos;
+    private String facebookId;
 
     public int getId() {
         return id;
@@ -44,12 +42,12 @@ public class Usuario extends RealmObject {
         return this;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getfacebookId() {
+        return facebookId;
     }
 
-    public Usuario setTelefone(String telefone){
-        this.telefone = telefone;
+    public Usuario setfacebookId(String facebookId){
+        this.facebookId = facebookId;
         return this;
     }
 
@@ -62,22 +60,6 @@ public class Usuario extends RealmObject {
         return this;
     }
 
-    public String getSenha() {
-        return senha;
-    }
-
-    public Usuario setSenha(String senha){
-        this.senha = senha;
-        return this;
-    }
-    public boolean isTermos() {
-        return termos;
-    }
-
-    public Usuario setTermos(boolean termos){
-        this.termos = termos;
-        return this;
-    }
 
     public static Usuario create(Realm realm){
         return realm.createObject(Usuario.class, getNextPrimaryKey(realm,Usuario.class));
