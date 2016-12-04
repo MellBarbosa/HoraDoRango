@@ -1,16 +1,12 @@
 package com.projeto.horadorango.model;
 
-import android.support.v7.view.menu.MenuPresenter;
-
 import io.realm.Realm;
 import io.realm.RealmObject;
+import io.realm.annotations.Ignore;
 import io.realm.annotations.PrimaryKey;
 
 import static com.projeto.horadorango.util.RealmUtil.getNextPrimaryKey;
 
-/**
- * Created by Mell on 24/10/2016.
- */
 public class Empresa extends RealmObject {
 
 
@@ -24,6 +20,9 @@ public class Empresa extends RealmObject {
     private String horario_entrega;
     private double taxa_entrega;
     private Endereco endereco;
+
+    @Ignore
+    private int endereco_id;
 
     public int getId(){
         return id;
@@ -106,6 +105,10 @@ public class Empresa extends RealmObject {
 
     public Endereco getEndereco() {
         return endereco;
+    }
+
+    public int getEnderecoId() {
+        return endereco_id;
     }
 
     public Empresa setEndereco(Endereco endereco){

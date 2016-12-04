@@ -20,6 +20,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.projeto.horadorango.R.id.edtReferencia;
+import static com.projeto.horadorango.R.id.end;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -47,49 +48,58 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     public void salvarInformacoes(Sincronizacao sincronizacao){
-
         realm.beginTransaction();
 
-        for(int i =0; i < sincronizacao.getBairros().size() ;i++) {
+        for(int i = 0; i < sincronizacao.getBairros().size() ;i++) {
             Bairro bairro = sincronizacao.getBairros().get(i);
-            bairro = realm.copyToRealmOrUpdate(bairro);
-            realm.insertOrUpdate(bairro);
+            realm.copyToRealmOrUpdate(bairro);
         }
 
-        for(int i =0; i < sincronizacao.getCategorias().size() ;i++) {
+        for(int i = 0; i < sincronizacao.getCategorias().size() ;i++) {
             Categoria categoria = sincronizacao.getCategorias().get(i);
-            categoria = realm.copyToRealmOrUpdate(categoria);
-            realm.insertOrUpdate(categoria);
+            realm.copyToRealmOrUpdate(categoria);
         }
 
-       for(int i =0; i < sincronizacao.getCidades().size() ;i++) {
-            Cidade cidade = sincronizacao.getCidades().get(i);
-            cidade = realm.copyToRealmOrUpdate(cidade);
-            realm.insertOrUpdate(cidade);
+       for (int i = 0; i < sincronizacao.getCidades().size() ;i++) {
+           Cidade cidade = sincronizacao.getCidades().get(i);
+           realm.copyToRealmOrUpdate(cidade);
         }
 
-       for(int i =0; i < sincronizacao.getEnderecos().size() ;i++) {
-            Endereco endereco = sincronizacao.getEnderecos().get(i);
-            endereco = realm.copyToRealmOrUpdate(endereco);
-            realm.insertOrUpdate(endereco);
-        }
-
-       for(int i =0; i < sincronizacao.getEmpresas().size() ;i++) {
+        for(int i = 0; i < sincronizacao.getEmpresas().size() ;i++) {
             Empresa empresa = sincronizacao.getEmpresas().get(i);
-            empresa = realm.copyToRealmOrUpdate(empresa);
-            realm.insertOrUpdate(empresa);
+
+            if (empresa.getEndereco() == null) {
+                Endereco endereco = realm.where(Endereco.class).equalTo("id", empresa.getEnderecoId()).findFirst();
+                empresa.setEndereco(endereco);
+            }
+
+            realm.copyToRealmOrUpdate(empresa);
         }
 
-        for(int i =0; i < sincronizacao.getProdutos().size() ;i++) {
+       for (int i = 0; i < sincronizacao.getEnderecos().size() ;i++) {
+            Endereco endereco = sincronizacao.getEnderecos().get(i);
+            realm.copyToRealmOrUpdate(endereco);
+        }
+
+        for (int i = 0; i < sincronizacao.getProdutos().size() ;i++) {
             Produto produto = sincronizacao.getProdutos().get(i);
-            produto = realm.copyToRealmOrUpdate(produto);
-            realm.insertOrUpdate(produto);
+
+            if (produto.getEmpresa() == null) {
+                Empresa empresa = realm.where(Empresa.class).equalTo("id", produto.getEmpresaId()).findFirst();
+                produto.setEmpresa(empresa);
+            }
+
+            if (produto.getCategoria() == null) {
+                Categoria categoria = realm.where(Categoria.class).equalTo("id", produto.getCategoriaId()).findFirst();
+                produto.setCategoria(categoria);
+            }
+
+            realm.copyToRealmOrUpdate(produto);
         }
 
         realm.commitTransaction();
 
         startActivity(new Intent(this, MainActivity.class));
-
     }
 
     public void exibirErros(){

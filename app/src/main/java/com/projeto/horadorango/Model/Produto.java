@@ -2,6 +2,7 @@ package com.projeto.horadorango.model;
 
 import io.realm.Realm;
 import io.realm.RealmObject;
+import io.realm.annotations.Ignore;
 import io.realm.annotations.PrimaryKey;
 
 import static com.projeto.horadorango.util.RealmUtil.getNextPrimaryKey;
@@ -17,6 +18,12 @@ public class Produto extends RealmObject {
     private double valor;
     private Categoria categoria;
     private Empresa empresa;
+
+    @Ignore
+    private int empresa_id;
+
+    @Ignore
+    private int categoria_id;
 
     public int getId() {
         return id;
@@ -61,6 +68,14 @@ public class Produto extends RealmObject {
     public Produto setEmpresa(Empresa empresa){
         this.empresa = empresa;
         return this;
+    }
+
+    public int getEmpresaId() {
+        return empresa_id;
+    }
+
+    public int getCategoriaId() {
+        return categoria_id;
     }
 
     @Override
