@@ -31,7 +31,7 @@ public class PedidoActivity extends AppCompatActivity implements View.OnClickLis
     private TextView tvEmpresa;
     private TextView tvHorarioFunc;
     private TextView tvHorariosEntrega;
-    private TextView tvEndereco;
+    private TextView tvEnderecoEmpresa;
     private TextView tvTelefones;
     private ImageView ivMenos;
     private ImageView ivMais;
@@ -55,7 +55,7 @@ public class PedidoActivity extends AppCompatActivity implements View.OnClickLis
         tvEmpresa = (TextView) findViewById(R.id.tvEmpresa);
         tvHorarioFunc = (TextView)findViewById(R.id.tvHorarioFunc);
         tvHorariosEntrega = (TextView)findViewById(R.id.tvHorariosEntrega);
-        tvEndereco = (TextView)findViewById(R.id.tvEndereco);
+        tvEnderecoEmpresa = (TextView)findViewById(R.id.tvEndereco);
         tvTelefones = (TextView)findViewById(R.id.tvTelefones);
         ivMenos = (ImageView)findViewById(R.id.ivMenos);
         ivMais = (ImageView)findViewById(R.id.ivMais);
@@ -71,7 +71,7 @@ public class PedidoActivity extends AppCompatActivity implements View.OnClickLis
             tvHorarioFunc.setText(empresa.getHorario_func());
             tvHorariosEntrega.setText(empresa.getHorario_entrega());
             tvTelefones.setText(empresa.getTel1()+ "; " +empresa.getTel2()+ "; " +empresa.getTel3());
-         //   tvEndereco.setText(empresa.getEndereco().getEndereco() + ',' + empresa.getEndereco().getNumero() + ',' + empresa.getEndereco().getComplemento() + ',' + empresa.getEndereco().getBairro().getDescricao() );
+        //    tvEnderecoEmpresa.setText(empresa.getEndereco().getEndereco());// + ',' + empresa.getEndereco().getNumero() + ',' + empresa.getEndereco().getComplemento() + ',' + empresa.getEndereco().getBairro().getDescricao() );
         }
 
         ListView produtosEmpresaListView = (ListView) findViewById(R.id.ProdutosEmpresaListView);

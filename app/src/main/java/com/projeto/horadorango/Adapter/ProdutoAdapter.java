@@ -140,7 +140,7 @@ public class ProdutoAdapter extends BaseAdapter {
 
             //preenchendo o textview
             tvProduto.setText(pedidoItem.getProduto().getDescricao());
-       //     tvValor.setText(Double.parseDouble(pedidoItem.getProduto().getValor()));
+            tvValor.setText("R$" + String.valueOf(pedidoItem.getProduto().getValor()));
             tvCategoria.setText(pedidoItem.getProduto().getCategoria().getDescricao());
 
             tvQuantidade.setText("" + pedidoItem.getQuantidade());

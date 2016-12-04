@@ -10,11 +10,13 @@
     android:paddingLeft="3dp"
     android:paddingRight="3dp"
     android:paddingTop="3dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
     tools:context="com.projeto.horadorango.SplashActivity"
-    tools:background="@color/black">
+    tools:background="@color/black"
+    android:background="@color/black">
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/splash_ic"
         android:layout_marginTop="36dp"

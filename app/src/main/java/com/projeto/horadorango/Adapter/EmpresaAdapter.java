@@ -16,6 +16,8 @@ import java.util.ArrayList;
 
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmBaseAdapter;
+import io.realm.RealmCollection;
+import io.realm.RealmList;
 
 public class EmpresaAdapter extends RealmBaseAdapter<Produto> implements ListAdapter {
 
@@ -48,7 +50,7 @@ public class EmpresaAdapter extends RealmBaseAdapter<Produto> implements ListAda
         Produto produto = getItem(position);
 
         holder.tvEmpresa.setText(produto.getEmpresa().getNome_fantasia());
-        holder.tvHorarioEntrega.setText(produto.getEmpresa().getHorario_func());
+        holder.tvHorarioEntrega.setText(produto.getEmpresa().getHorario_entrega());
         holder.tvPratoDia.setText(produto.getDescricao());
 
         return row;

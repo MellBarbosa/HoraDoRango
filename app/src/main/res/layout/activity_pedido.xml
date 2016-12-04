@@ -27,53 +27,13 @@
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="96dp"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="15dp"
-        android:id="@+id/tvEmpresa"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:textStyle="normal|bold"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:padding="4dp" />
-
-    <TextView
-        android:text="Horário Func.:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_below="@+id/tvEmpresa"
-        android:layout_alignLeft="@+id/tvEmpresa"
-        android:layout_alignStart="@+id/tvEmpresa"
-        android:id="@+id/textView18"
-        android:textColor="@color/black"
-        android:textStyle="normal|bold" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ic_launcher"
-        android:layout_alignTop="@+id/tvEmpresa"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/iv_LogoEmpresa"
-        android:layout_toLeftOf="@+id/textView18"
-        android:layout_toStartOf="@+id/textView18"
-        android:layout_alignBottom="@+id/TextView" />
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvEmpresa"
-        android:layout_toRightOf="@+id/textView18"
         android:id="@+id/tvHorarioFunc"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:layout_toEndOf="@+id/textView18"
+        android:layout_toRightOf="@+id/textView18" />
 
     <TextView
         android:text="Horários Entrega:"
@@ -118,32 +78,8 @@
         android:layout_alignBottom="@+id/TextView"
         android:layout_toRightOf="@+id/TextView"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:text="Endereco"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/iv_LogoEmpresa"
-        android:id="@+id/tvEnderecoEmpresa"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:textColor="@color/black"
-        android:layout_toRightOf="@+id/textView30"
-        android:layout_toEndOf="@+id/textView30" />
-
-    <TextView
-        android:text="Endereço:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView30"
-        android:textStyle="normal|bold"
-        android:textColor="@color/black"
-        android:layout_below="@+id/iv_LogoEmpresa"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="12dp"
-        android:layout_marginStart="12dp" />
+        android:textSize="10sp" />
 
     <ListView
         android:layout_width="match_parent"
@@ -167,5 +103,65 @@
         android:layout_marginRight="11dp"
         android:layout_marginEnd="11dp"
         android:layout_marginBottom="12dp" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvEmpresa"
+        android:textStyle="normal|bold"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:padding="4dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Endereço:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView30"
+        android:textStyle="normal|bold"
+        android:textColor="@color/black"
+        android:layout_below="@+id/TextView"
+        android:layout_toRightOf="@+id/iv_LogoEmpresa"
+        android:layout_toEndOf="@+id/iv_LogoEmpresa" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/pequeno_ic"
+        android:id="@+id/iv_LogoEmpresa"
+        android:textAlignment="center"
+        android:layout_below="@+id/tvEmpresa"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Horário Func.:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView18"
+        android:textColor="@color/black"
+        android:textStyle="normal|bold"
+        android:layout_below="@+id/tvEmpresa"
+        android:layout_toRightOf="@+id/iv_LogoEmpresa"
+        android:layout_toEndOf="@+id/iv_LogoEmpresa" />
+
+    <TextView
+        android:text="Endereco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvEnderecoEmpresa"
+        android:textColor="@color/black"
+        android:layout_alignBaseline="@+id/textView30"
+        android:layout_alignBottom="@+id/textView30"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/textView30"
+        android:layout_toEndOf="@+id/textView30" />
 
 </RelativeLayout>
