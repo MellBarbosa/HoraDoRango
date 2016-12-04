@@ -7,7 +7,11 @@ import android.util.Log;
 
 import com.projeto.horadorango.api.ApiComunicator;
 import com.projeto.horadorango.model.Bairro;
+import com.projeto.horadorango.model.Categoria;
 import com.projeto.horadorango.model.Cidade;
+import com.projeto.horadorango.model.Empresa;
+import com.projeto.horadorango.model.Endereco;
+import com.projeto.horadorango.model.Produto;
 import com.projeto.horadorango.model.Sincronizacao;
 
 import io.realm.Realm;
@@ -52,12 +56,35 @@ public class SplashActivity extends AppCompatActivity {
             realm.insertOrUpdate(bairro);
         }
 
-        for(int i =0; i < sincronizacao.getCidades().size() ;i++) {
+        for(int i =0; i < sincronizacao.getCategorias().size() ;i++) {
+            Categoria categoria = sincronizacao.getCategorias().get(i);
+            categoria = realm.copyToRealmOrUpdate(categoria);
+            realm.insertOrUpdate(categoria);
+        }
+
+       for(int i =0; i < sincronizacao.getCidades().size() ;i++) {
             Cidade cidade = sincronizacao.getCidades().get(i);
             cidade = realm.copyToRealmOrUpdate(cidade);
             realm.insertOrUpdate(cidade);
         }
 
+       for(int i =0; i < sincronizacao.getEnderecos().size() ;i++) {
+            Endereco endereco = sincronizacao.getEnderecos().get(i);
+            endereco = realm.copyToRealmOrUpdate(endereco);
+            realm.insertOrUpdate(endereco);
+        }
+
+       for(int i =0; i < sincronizacao.getEmpresas().size() ;i++) {
+            Empresa empresa = sincronizacao.getEmpresas().get(i);
+            empresa = realm.copyToRealmOrUpdate(empresa);
+            realm.insertOrUpdate(empresa);
+        }
+
+        for(int i =0; i < sincronizacao.getProdutos().size() ;i++) {
+            Produto produto = sincronizacao.getProdutos().get(i);
+            produto = realm.copyToRealmOrUpdate(produto);
+            realm.insertOrUpdate(produto);
+        }
 
         realm.commitTransaction();
 
@@ -66,6 +93,6 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     public void exibirErros(){
-
+       Log.e("erro de sinconizacao", "erro");
     }
 }

@@ -27,22 +27,4 @@ public interface ApiService {
     @GET("api/sincronizar")
     Call<Sincronizacao> sincronizar();
 
-    @GET("api/bairro")
-    Call<List<Bairro>> listaBairro();
-
-    @GET("api/categoria")
-    Call<List<Categoria>> listaCategoria();
-
-    @GET("api/cidade")
-    Call<List<Cidade>> listaCidade();
-
-    @GET("api/empresa")
-    Call<List<Empresa>> listaEmpresa();
-
-    @GET("api/endereco")
-    Call<List<Endereco>> listaEndereco();
-
-    @GET("api/produto")
-    Call<List<Produto>> listaProduto();
-
 }

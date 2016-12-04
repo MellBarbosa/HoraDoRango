@@ -55,9 +55,9 @@ public class HoraDoRangoApp extends Application {
 
     private void initialData(Realm realm) {
 
-        realm.insert(Categoria.create(realm).setDescricao("Rango do Dia"));
-        realm.insert(Categoria.create(realm).setDescricao("Bebidas"));
-        realm.insert(Categoria.create(realm).setDescricao("Sobremesa"));
+     //   realm.insert(Categoria.create(realm).setDescricao("Rango do Dia"));
+    //    realm.insert(Categoria.create(realm).setDescricao("Bebidas"));
+    //    realm.insert(Categoria.create(realm).setDescricao("Sobremesa"));
 
      //   realm.insert(Bairro.create(realm).setDescricao("Centro"));
      //   realm.insert(Bairro.create(realm).setDescricao("Niterói"));

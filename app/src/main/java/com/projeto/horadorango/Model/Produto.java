@@ -63,6 +63,10 @@ public class Produto extends RealmObject {
         return this;
     }
 
+    @Override
+    public String toString(){
+        return descricao;
+    }
 
     public static Produto create(Realm realm){
         return realm.createObject(Produto.class, getNextPrimaryKey(realm, Produto.class));

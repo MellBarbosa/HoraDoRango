@@ -9,7 +9,11 @@ import java.util.List;
 public class Sincronizacao {
 
     private List<Bairro> bairros;
+    private List<Categoria> categorias;
     private List<Cidade> cidades;
+    private List<Endereco> enderecos;
+    private List<Produto> produtos;
+    private List<Empresa> empresas;
 
     public List<Bairro> getBairros() {
         return bairros;
@@ -19,4 +23,11 @@ public class Sincronizacao {
         return cidades;
     }
 
+    public List<Empresa> getEmpresas() { return empresas; }
+
+    public List<Categoria> getCategorias() { return categorias; }
+
+    public List<Endereco> getEnderecos() { return enderecos; }
+
+    public List<Produto> getProdutos() { return produtos; }
 }
