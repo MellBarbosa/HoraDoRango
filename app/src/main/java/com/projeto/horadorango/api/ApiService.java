@@ -12,6 +12,8 @@ import com.projeto.horadorango.model.Usuario;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
@@ -21,8 +23,9 @@ import retrofit2.http.POST;
 
 public interface ApiService {
 
- //   @POST("/login")
- //   Call<Usuario> basicLogin();
+    @FormUrlEncoded
+    @POST("api/login")
+    Call<Usuario> login(@Field("login") String login,@Field("email") String email,@Field("facebookId") String facebookId);
 
     @GET("api/sincronizar")
     Call<Sincronizacao> sincronizar();

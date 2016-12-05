@@ -22,7 +22,8 @@
         android:layout_alignParentStart="true"
         android:scaleType="centerInside"
         android:layout_toLeftOf="@+id/textView4"
-        android:layout_toStartOf="@+id/textView4" />
+        android:layout_toStartOf="@+id/textView4"
+        android:paddingRight="6dp" />
 
     <TextView
         android:text="TextView"

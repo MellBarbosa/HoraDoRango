@@ -3,6 +3,7 @@ package com.projeto.horadorango.model;
 
 import io.realm.Realm;
 import io.realm.RealmObject;
+import io.realm.annotations.Ignore;
 import io.realm.annotations.PrimaryKey;
 
 import static com.projeto.horadorango.util.RealmUtil.getNextPrimaryKey;
@@ -22,6 +23,10 @@ public class Endereco extends RealmObject{
     private Cidade cidade;
     private Usuario usuario;
     private String ponto_referencia;
+    @Ignore
+    private int bairro_id;
+    @Ignore
+    private int cidade_id;
 
     public long getId() {
         return id;
@@ -110,5 +115,13 @@ public class Endereco extends RealmObject{
 
     public static Endereco create(Realm realm){
         return realm.createObject(Endereco.class, getNextPrimaryKey(realm, Endereco.class));
+    }
+
+    public int getBairro_id() {
+        return bairro_id;
+    }
+
+    public int getCidade_id() {
+        return cidade_id;
     }
 }

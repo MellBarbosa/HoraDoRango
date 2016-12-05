@@ -15,13 +15,9 @@
             android:icon="@drawable/ic_localizacao"
             android:title="Meus Endereços" />
         <item
-            android:id="@+id/nav_configuracoes"
-            android:icon="@drawable/ic_settings"
-            android:title="Configurações" />
-        <item
-            android:id="@+id/nav_contato"
-            android:icon="@drawable/ic_comunique"
-            android:title="Contato" />
+            android:id="@+id/nav_sair"
+            android:icon="@drawable/ic_logout"
+            android:title="Sair" />
 
     </group>
 </menu>

@@ -13,6 +13,7 @@ import com.projeto.horadorango.model.Empresa;
 import com.projeto.horadorango.model.Endereco;
 import com.projeto.horadorango.model.Produto;
 import com.projeto.horadorango.model.Sincronizacao;
+import com.projeto.horadorango.model.Usuario;
 
 import io.realm.Realm;
 import retrofit2.Call;
@@ -78,7 +79,20 @@ public class SplashActivity extends AppCompatActivity {
 
        for (int i = 0; i < sincronizacao.getEnderecos().size() ;i++) {
             Endereco endereco = sincronizacao.getEnderecos().get(i);
+
+           if (endereco.getBairro() == null) {
+               Bairro bairro = realm.where(Bairro.class).equalTo("id", endereco.getBairro_id()).findFirst();
+               endereco.setBairro(bairro);
+           }
+
+           if (endereco.getCidade() == null) {
+               Cidade cidade = realm.where(Cidade.class).equalTo("id", endereco.getCidade_id()).findFirst();
+               endereco.setCidade(cidade);
+           }
+
             realm.copyToRealmOrUpdate(endereco);
+
+
         }
 
         for (int i = 0; i < sincronizacao.getProdutos().size() ;i++) {
@@ -99,7 +113,13 @@ public class SplashActivity extends AppCompatActivity {
 
         realm.commitTransaction();
 
-        startActivity(new Intent(this, MainActivity.class));
+        if (realm.where(Usuario.class).findAll().size() == 0){
+            startActivity(new Intent(this, LoginActivity.class));
+        }else {
+            startActivity(new Intent(this, MainActivity.class));
+        }
+
+        finish();
     }
 
     public void exibirErros(){

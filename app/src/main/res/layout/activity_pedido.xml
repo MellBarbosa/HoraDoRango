@@ -111,7 +111,7 @@
         android:id="@+id/tvEmpresa"
         android:textStyle="normal|bold"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="21sp"
         android:padding="4dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
@@ -138,7 +138,8 @@
         android:textAlignment="center"
         android:layout_below="@+id/tvEmpresa"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:padding="5dp" />
 
     <TextView
         android:text="Horário Func.:"

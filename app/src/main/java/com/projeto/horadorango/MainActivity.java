@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.facebook.login.LoginManager;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.projeto.horadorango.adapter.EmpresaAdapter;
@@ -23,6 +24,7 @@ import com.projeto.horadorango.model.Bairro;
 import com.projeto.horadorango.model.Categoria;
 import com.projeto.horadorango.model.Produto;
 import com.projeto.horadorango.model.Sincronizacao;
+import com.projeto.horadorango.model.Usuario;
 
 import java.util.List;
 
@@ -119,13 +121,13 @@ public class MainActivity extends AppCompatActivity
             Intent ed = new Intent(this, ListaEnderecosActivity.class);
             startActivity(ed);
 
-        } else if (id == R.id.nav_configuracoes) {
+        } else if (id == R.id.nav_sair) {
 
-            Intent nv = new Intent(this, LoginActivity.class);
-            startActivity(nv);
-
-        } else if (id == R.id.nav_contato) {
-
+            LoginManager.getInstance().logOut();
+            realm.beginTransaction();
+            realm.where(Usuario.class).findAll().deleteAllFromRealm();
+            realm.commitTransaction();
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
