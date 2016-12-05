@@ -108,13 +108,11 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_inicio) {
-            Intent p = new Intent(this, CadProdutoActivity.class);
-            startActivity(p);
+
             // Handle the camera action
         } else if (id == R.id.nav_pedidos) {
 
-           Intent u = new Intent(this, CadEmpresaActivity.class);
-            startActivity(u);
+
 
         } else if (id == R.id.nav_enderecos) {
 

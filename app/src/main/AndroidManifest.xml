@@ -28,14 +28,11 @@
         </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".ListaEnderecosActivity" />
-        <activity android:name=".UsuarioActivity" />
         <activity android:name=".EnderecoActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".FinalizaPedidoActivity" />
         <activity android:name=".CarrinhoActivity" />
         <activity android:name=".PedidoActivity" />
-        <activity android:name=".CadProdutoActivity" />
-        <activity android:name=".CadEmpresaActivity" />
     </application>
 
 </manifest>
