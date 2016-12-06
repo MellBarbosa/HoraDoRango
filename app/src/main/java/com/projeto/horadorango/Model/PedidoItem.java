@@ -13,6 +13,7 @@ public class PedidoItem extends RealmObject {
     private Produto produto;
     private int quantidade;
     private double valor_item;
+    private long produto_id;
 
     public Produto getProduto() {
         return produto;
@@ -20,6 +21,8 @@ public class PedidoItem extends RealmObject {
 
     public PedidoItem setProduto(Produto produto) {
         this.produto = produto;
+        this.produto_id = produto.getId();
+        this.valor_item = produto.getValor();
         return this;
     }
 
