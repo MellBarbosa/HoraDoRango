@@ -46,7 +46,7 @@ public class CarrinhoActivity extends AppCompatActivity {
 
 
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+          //  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setTitle("Meu Carrinho");
         }
 

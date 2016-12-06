@@ -35,7 +35,7 @@ import io.realm.Realm;
             enderecoListView.setOnItemClickListener(this);
 
             realm = Realm.getDefaultInstance();
-            enderecoAdapter = new EnderecoAdapter(this, realm.where(Endereco.class).findAll());
+            enderecoAdapter = new EnderecoAdapter(this, realm.where(Endereco.class).equalTo("usuario.id", 1).findAll());
             enderecoListView.setAdapter(enderecoAdapter);
         }
 

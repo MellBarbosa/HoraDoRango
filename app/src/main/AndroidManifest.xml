@@ -30,9 +30,12 @@
         <activity android:name=".ListaEnderecosActivity" />
         <activity android:name=".EnderecoActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".FinalizaPedidoActivity" />
-        <activity android:name=".CarrinhoActivity" />
-        <activity android:name=".PedidoActivity" />
+        <activity android:name=".FinalizaPedidoActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".CarrinhoActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".PedidoActivity"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

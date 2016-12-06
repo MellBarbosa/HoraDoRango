@@ -1,28 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp">
+    android:padding="8dp"
+    android:weightSum="1">
 
     <TextView
         android:id="@+id/name_tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/price_un_tv"
-        android:layout_width="match_parent"
+        android:layout_width="162dp"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/quant_tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_width="54dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/name_tv"
+        android:textAlignment="textStart" />
+
+    <TextView
+        android:id="@+id/price_un_tv"
+        android:layout_width="59dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/quant_tv"
+        android:layout_toLeftOf="@+id/total_tv"
+        android:layout_toStartOf="@+id/total_tv"
+        android:layout_weight="0.32"
+        android:textAlignment="textStart" />
 
     <TextView
         android:id="@+id/total_tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/quant_tv"
+        android:layout_toEndOf="@+id/quant_tv"
+        android:layout_weight="0.49"
+        android:layout_width="65dp"
+        android:textAlignment="center" />
 
 </LinearLayout>

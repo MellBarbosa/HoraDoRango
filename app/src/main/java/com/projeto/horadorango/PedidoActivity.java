@@ -50,7 +50,7 @@ public class PedidoActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_pedido);
 
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+          //  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setTitle("Faça seu Pedido");
         }
 

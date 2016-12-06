@@ -10,15 +10,6 @@
     android:paddingTop="3dp"
     tools:context="com.projeto.horadorango.CarrinhoActivity">
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/tvAdicionarItems"
-        android:id="@+id/ProdutosListView" />
-
     <Button
         android:text="Selecionar Endereço"
         android:layout_width="wrap_content"
@@ -50,32 +41,94 @@
         android:layout_alignParentEnd="true" />
 
     <TextView
-        android:text="R$ 0,00"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvTotal"
-        android:layout_alignBaseline="@+id/textView13"
-        android:layout_alignBottom="@+id/textView13"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:textColor="@color/black"
-        android:textStyle="normal|bold"
-        android:textSize="18sp" />
-
-    <TextView
         android:text="Adicionar mais Itens"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textView13"
         android:id="@+id/tvAdicionarItems"
         android:textStyle="normal|bold"
         android:textColor="@color/black"
         android:textAlignment="center"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
+        android:textSize="16sp"
+        android:padding="4dp"
+        android:layout_above="@+id/tvTotal"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textSize="16sp"
-        android:padding="4dp" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text=" Prod."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView9"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textSize="24sp"
+        android:textStyle="normal|bold"
+        android:textColor="@color/colorPrimaryDark"
+        android:background="?attr/colorAccent"
+        tools:textColor="@color/colorAccent" />
+
+    <TextView
+        android:text="Quant."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView15"
+        android:textStyle="normal|bold"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="Total  "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView17"
+        android:textStyle="normal|bold"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/tvTotal"
+        android:layout_alignStart="@+id/tvTotal" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/ProdutosListView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView9"
+        android:layout_above="@+id/tvAdicionarItems" />
+
+    <TextView
+        android:text="R$ 0,00"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvTotal"
+        android:textColor="@color/black"
+        android:textStyle="normal|bold"
+        android:textSize="18sp"
+        android:layout_alignBaseline="@+id/textView13"
+        android:layout_alignBottom="@+id/textView13"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="Valor  "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView20"
+        android:textStyle="normal|bold"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/textView15"
+        android:layout_toLeftOf="@+id/textView17"
+        android:layout_toStartOf="@+id/textView17" />
 
 </RelativeLayout>
