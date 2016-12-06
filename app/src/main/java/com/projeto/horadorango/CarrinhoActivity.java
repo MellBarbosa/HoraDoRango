@@ -8,14 +8,24 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.projeto.horadorango.adapter.CarrinhoAdapter;
+import com.projeto.horadorango.model.PedidoItem;
+
+import org.parceler.Parcels;
 import org.w3c.dom.Text;
 
+import java.util.List;
+
 public class CarrinhoActivity extends AppCompatActivity {
+
+    public static final String EXTRA_IDENT = "EXTRA_IDENT";
 
     private ListView ProdutosListView;
     private TextView tvAdicionarItems;
     private TextView tvTotal;
     private Button btSelecionarEndereco;
+    private List<PedidoItem> pedidoItem;
+    private CarrinhoAdapter carrinhoAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,15 +55,30 @@ public class CarrinhoActivity extends AppCompatActivity {
             }
         });
 
+        pedidoItem = Parcels.unwrap(getIntent().getParcelableExtra(EXTRA_IDENT));
+
+        carrinhoAdapter = new CarrinhoAdapter(this, pedidoItem);
+        ProdutosListView.setAdapter(carrinhoAdapter);
+
+        double total = 0;
+        for (PedidoItem item : pedidoItem) {
+            total += item.getProduto().getValor() * item.getQuantidade();
+        }
+        tvTotal.setText(String.format("R$ %s", total));
+
+
     }
 
+
+
     public void AdicionaItems(){
-        Intent i = new Intent(this, PedidoActivity.class);
-        startActivity(i);
+       finish();
     }
 
     public void SelecionaEndereco(){
         Intent u = new Intent(this, ListaEnderecosActivity.class);
         startActivity(u);
     }
+
+
 }

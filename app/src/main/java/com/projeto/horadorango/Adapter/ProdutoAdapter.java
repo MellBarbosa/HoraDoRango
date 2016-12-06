@@ -37,7 +37,7 @@ public class ProdutoAdapter extends BaseAdapter {
 
         for (Produto produto: produtos) {
             PedidoItem item = new PedidoItem();
-            item.setProduto(produto);
+            item.setProduto(Realm.getDefaultInstance().copyFromRealm(produto));
             items.add(item);
         }
 

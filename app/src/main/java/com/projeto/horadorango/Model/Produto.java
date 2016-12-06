@@ -1,5 +1,9 @@
 package com.projeto.horadorango.model;
 
+import org.parceler.Parcel;
+import org.parceler.Transient;
+
+import io.realm.ProdutoRealmProxy;
 import io.realm.Realm;
 import io.realm.RealmObject;
 import io.realm.annotations.Ignore;
@@ -10,13 +14,19 @@ import static com.projeto.horadorango.util.RealmUtil.getNextPrimaryKey;
 /**
  * Created by Mell on 24/10/2016.
  */
+@Parcel(implementations = { ProdutoRealmProxy.class },
+        value = Parcel.Serialization.FIELD, analyze = { Produto.class })
 public class Produto extends RealmObject {
 
     @PrimaryKey
     private int id;
     private String descricao;
     private double valor;
+
+    @Transient
     private Categoria categoria;
+
+    @Transient
     private Empresa empresa;
 
     @Ignore

@@ -1,8 +1,13 @@
 package com.projeto.horadorango.model;
 
+import org.parceler.Parcel;
+
+import io.realm.PedidoItemRealmProxy;
 import io.realm.Realm;
 import io.realm.RealmObject;
 
+@Parcel(implementations = { PedidoItemRealmProxy.class },
+        value = Parcel.Serialization.FIELD, analyze = { PedidoItem.class })
 public class PedidoItem extends RealmObject {
 
     private Produto produto;

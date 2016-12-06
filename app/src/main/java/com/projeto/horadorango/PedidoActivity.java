@@ -10,11 +10,17 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextClock;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.projeto.horadorango.adapter.ProdutoAdapter;
 import com.projeto.horadorango.model.Empresa;
 import com.projeto.horadorango.model.Endereco;
+import com.projeto.horadorango.model.PedidoItem;
 import com.projeto.horadorango.model.Produto;
+
+import org.parceler.Parcels;
+
+import java.util.List;
 
 import io.realm.Realm;
 
@@ -85,7 +91,16 @@ public class PedidoActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.fabProdEmp:
+
+                List<PedidoItem> itemsPedido = produtoAdapter.getProdutosSelecionados();
+
+                if(itemsPedido.size() == 0){
+                    Toast.makeText(this, "Pedido não contém itens!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 Intent ca = new Intent(this, CarrinhoActivity.class);
+                ca.putExtra(CarrinhoActivity.EXTRA_IDENT, Parcels.wrap(itemsPedido));
                 startActivity(ca);
 
                 break;
