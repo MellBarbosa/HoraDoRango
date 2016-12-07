@@ -69,14 +69,14 @@
         android:layout_below="@+id/tvCategoria"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/tvValor"
-        android:layout_toStartOf="@+id/tvValor" />
+        android:layout_toLeftOf="@+id/valor_tv"
+        android:layout_toStartOf="@+id/valor_tv" />
 
     <TextView
         android:text="0,00"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tvValor"
+        android:id="@+id/valor_tv"
         android:layout_marginRight="16dp"
         android:layout_marginEnd="16dp"
         android:layout_alignBaseline="@+id/tvProduto"

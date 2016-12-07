@@ -32,23 +32,65 @@
         android:textSize="18sp" />
 
     <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/status_tv"
+        android:textSize="18sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
         android:text="Status:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView22"
         android:textStyle="normal|bold"
         android:textSize="18sp"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/status_tv"
+        android:layout_toStartOf="@+id/status_tv" />
+
+    <TextView
+        android:text="Data:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/textView5"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView7"
+        android:textStyle="normal|bold"
+        android:textSize="18sp" />
 
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/status_tv"
+        android:layout_alignBottom="@+id/textView7"
+        android:layout_toRightOf="@+id/textView7"
+        android:layout_toEndOf="@+id/textView7"
+        android:id="@+id/data_tv"
+        android:textSize="18sp" />
+
+    <TextView
+        android:text="Valor:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView25"
+        android:layout_below="@+id/textView7"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textStyle="normal|bold"
+        android:textSize="18sp" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/valor_tv"
         android:textSize="18sp"
-        android:layout_below="@+id/textView5"
-        android:layout_toRightOf="@+id/textView22"
-        android:layout_toEndOf="@+id/textView22" />
+        android:layout_below="@+id/data_tv"
+        android:layout_toRightOf="@+id/textView25"
+        android:layout_toEndOf="@+id/textView25" />
 </RelativeLayout>

@@ -46,7 +46,7 @@ public class ListaPedidosActivity extends AppCompatActivity {
 
                 realm = Realm.getDefaultInstance();
                 int id = realm.where(Usuario.class).findFirst().getId();
-          //      pedidosAdapter = new PedidosAdapter(this, realm.where(Pedido.class).findAll());
+                pedidosAdapter = new PedidosAdapter(this, realm.where(Pedido.class).findAll());
                 PedidosListView.setAdapter(pedidosAdapter);
             }
 

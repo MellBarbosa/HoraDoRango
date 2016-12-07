@@ -7,6 +7,7 @@ import java.util.List;
 import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.Ignore;
 import io.realm.annotations.PrimaryKey;
 
 import static com.projeto.horadorango.util.RealmUtil.getNextPrimaryKey;
@@ -26,6 +27,9 @@ public class Pedido extends RealmObject {
     private Date horario_entrega;
     private Endereco endereco;
     private RealmList<PedidoItem> itens;
+
+    @Ignore
+    private Double Valor;
 
     public int getId() {
         return id;
@@ -110,5 +114,13 @@ public class Pedido extends RealmObject {
 
     public static Pedido create(Realm realm){
         return realm.createObject(Pedido.class, getNextPrimaryKey(realm, Pedido.class));
+    }
+
+    public Double getValor() {
+        return Valor;
+    }
+
+    public void setValor(Double valor) {
+        Valor = valor;
     }
 }

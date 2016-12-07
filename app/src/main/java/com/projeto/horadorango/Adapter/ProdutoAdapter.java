@@ -6,15 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.projeto.horadorango.model.Pedido;
 import com.projeto.horadorango.model.PedidoItem;
 import com.projeto.horadorango.model.Produto;
 import com.projeto.horadorango.R;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,7 +19,6 @@ import java.util.List;
 
 import io.realm.OrderedRealmCollection;
 import io.realm.Realm;
-import io.realm.RealmBaseAdapter;
 
 public class ProdutoAdapter extends BaseAdapter {
 
@@ -89,7 +84,7 @@ public class ProdutoAdapter extends BaseAdapter {
             holder.tvQuantidade = (TextView)row.findViewById(R.id.tvQuantidade);
             holder.ivMais = (ImageView) row.findViewById(R.id.ivMais);
             holder.ivMenos = (ImageView) row.findViewById(R.id.ivMenos);
-            holder.tvValor = (TextView) row.findViewById(R.id.tvValor);
+            holder.tvValor = (TextView) row.findViewById(R.id.valor_tv);
             holder.init();
             row.setTag(holder);
         }
