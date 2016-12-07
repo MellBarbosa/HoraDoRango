@@ -46,7 +46,8 @@
         <activity
             android:name=".PedidoActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".ListaPedidosActivity" />
+        <activity android:name=".ListaPedidosActivity"
+            android:theme="@style/AppTheme"/>
         <activity android:name=".adapter.PedidosAdapter"></activity>
     </application>
 

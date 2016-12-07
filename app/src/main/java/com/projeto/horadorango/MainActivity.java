@@ -112,6 +112,8 @@ public class MainActivity extends AppCompatActivity
             // Handle the camera action
         } else if (id == R.id.nav_pedidos) {
 
+            Intent ed = new Intent(this, ListaPedidosActivity.class);
+            startActivity(ed);
 
 
         } else if (id == R.id.nav_enderecos) {

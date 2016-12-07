@@ -40,4 +40,9 @@ public interface ApiService {
 
     @POST("api/SalvarEndereco")
     Call<EnderecoRequest> salvarEndereco (@Body EnderecoRequest enderecoRequest);
+
+    @FormUrlEncoded
+    @POST("api/pedidosusuario")
+    Call<List<Pedido>> listaPedidos(@Field("idUsuario") int idUsuario);
+
 }
