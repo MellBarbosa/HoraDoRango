@@ -224,7 +224,7 @@
         android:layout_below="@+id/tvEmpresa"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/tvItemsPedido"
+        android:id="@+id/tvItensPedido"
         android:layout_above="@+id/textView23" />
 
 </RelativeLayout>
