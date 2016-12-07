@@ -1,5 +1,8 @@
 package com.projeto.horadorango.api;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -15,10 +18,14 @@ public class ApiComunicator {
 
     private static OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
+    private static final Gson gson = new GsonBuilder()
+            .setDateFormat("yyyy-MM-dd HH:mm:ss")
+            .create();
+
     private static Retrofit.Builder builder =
             new Retrofit.Builder()
                     .baseUrl(API_BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create());
+                    .addConverterFactory(GsonConverterFactory.create(gson));
 
     private static ApiService createService() {
         httpClient.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY));

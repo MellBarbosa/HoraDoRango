@@ -11,7 +11,7 @@
     tools:context="com.projeto.horadorango.adapter.PedidosAdapter">
 
     <TextView
-        android:text="Pedido nº :"
+        android:text="Pedido nº: "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -42,7 +42,7 @@
         android:layout_alignParentEnd="true" />
 
     <TextView
-        android:text="Status:"
+        android:text="Status: "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView22"
@@ -53,7 +53,7 @@
         android:layout_toStartOf="@+id/status_tv" />
 
     <TextView
-        android:text="Data:"
+        android:text="Data: "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView5"
@@ -74,7 +74,7 @@
         android:textSize="18sp" />
 
     <TextView
-        android:text="Valor:"
+        android:text="Valor: "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView25"

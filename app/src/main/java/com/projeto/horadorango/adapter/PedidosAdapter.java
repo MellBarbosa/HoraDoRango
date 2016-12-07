@@ -11,6 +11,7 @@ import com.projeto.horadorango.R;
 import com.projeto.horadorango.model.Pedido;
 import com.projeto.horadorango.model.PedidoItem;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import io.realm.OrderedRealmCollection;
@@ -21,8 +22,8 @@ public class PedidosAdapter extends BaseAdapter {
     private LayoutInflater layoutInflater;
     private List<Pedido> items;
 
-    public PedidosAdapter(Callback<List<Pedido>> context, OrderedRealmCollection<Pedido> realmResults ) {
-        layoutInflater = LayoutInflater.from((Context) context);
+    public PedidosAdapter(Context context, List<Pedido> items) {
+        layoutInflater = LayoutInflater.from(context);
         this.items = items;
     }
 
@@ -65,14 +66,27 @@ public class PedidosAdapter extends BaseAdapter {
         return row;
     }
 
+    public void setItems(List<Pedido> pedidos) {
+        this.items = pedidos;
+        notifyDataSetChanged();
+    }
+
     private static class ViewHolder {
         TextView idTv, statusTv, dataTv, valorTv;
 
         void setPedido(Pedido pedido) {
-            idTv.setText(pedido.getId());
+            idTv.setText(String.valueOf(pedido.getId()));
             statusTv.setText(pedido.getStatus());
-         //   dataTv.setText(pedido.getData());
-           // valorTv.setText(pedido.get);
+
+            if (pedido.getData() != null)
+                dataTv.setText(SimpleDateFormat.getDateTimeInstance().format(pedido.getData()));
+            else
+                dataTv.setText("");
+
+//            if (pedido.getValor() == null)
+//                valorTv.setText("R$ 0");
+//            else
+//                valorTv.setText(String.format("R$ %s", pedido.getValor()));
         }
     }
 }
