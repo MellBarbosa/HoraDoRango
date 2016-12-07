@@ -26,7 +26,6 @@ public class Produto extends RealmObject {
     @Transient
     private Categoria categoria;
 
-    @Transient
     private Empresa empresa;
 
     @Ignore

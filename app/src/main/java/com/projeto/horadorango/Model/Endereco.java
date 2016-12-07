@@ -1,6 +1,10 @@
 package com.projeto.horadorango.model;
 
 
+import org.parceler.Parcel;
+import org.parceler.Transient;
+
+import io.realm.EnderecoRealmProxy;
 import io.realm.Realm;
 import io.realm.RealmObject;
 import io.realm.annotations.Ignore;
@@ -11,6 +15,8 @@ import static com.projeto.horadorango.util.RealmUtil.getNextPrimaryKey;
 /**
  * Created by Mell on 24/10/2016.
  */
+@Parcel(implementations = { EnderecoRealmProxy.class },
+        value = Parcel.Serialization.FIELD, analyze = { Endereco.class })
 public class Endereco extends RealmObject{
 
     @PrimaryKey
@@ -21,6 +27,7 @@ public class Endereco extends RealmObject{
     private String numero;
     private String complemento;
     private Cidade cidade;
+    @Transient
     private Usuario usuario;
     private String ponto_referencia;
     @Ignore

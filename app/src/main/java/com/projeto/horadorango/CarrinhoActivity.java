@@ -104,7 +104,7 @@ public class CarrinhoActivity extends AppCompatActivity {
                     public boolean onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
 
                         android.util.Log.e("endereco", "log" + enderecos.get(position));
-                        efetuarPedido(enderecos.get(position));
+                        finalizarPedido(enderecos.get(position));
                       return true;
                     }
                 })
@@ -112,40 +112,14 @@ public class CarrinhoActivity extends AppCompatActivity {
                 .show();
     }
 
-    public void efetuarPedido(Endereco endereco){
 
-        new MaterialDialog.Builder(this)
-                          .title("Hora do Rango")
-                          .content("Carregando")
-                          .progress(true, 0)
-                          .show();
+    public void finalizarPedido(Endereco endereco){
 
-        Usuario usuario = Realm.getDefaultInstance().where(Usuario.class).findFirst();
-        PedidoRequest pedido = new PedidoRequest();
-        pedido.setEndereco_id(endereco.getId());
-        pedido.setUsuario_id(usuario.getId());
-        pedido.setStatus("A");
-
-        pedido.setItens(pedidoItem);
-
-        ApiComunicator.get().enviarPedido(pedido).enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-
-                Intent intent = new Intent(CarrinhoActivity.this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-
-            }
-        });
-
-
+        Intent ca = new Intent(this, FinalizaPedidoActivity.class);
+        ca.putExtra(FinalizaPedidoActivity.EXTRA_ITEM, Parcels.wrap(pedidoItem));
+        ca.putExtra(FinalizaPedidoActivity.EXTRA_ENDERECO, Parcels.wrap(endereco));
+        startActivity(ca);
 
     }
-
 
 }

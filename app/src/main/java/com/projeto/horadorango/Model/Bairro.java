@@ -1,5 +1,8 @@
 package com.projeto.horadorango.model;
 
+import org.parceler.Parcel;
+
+import io.realm.BairroRealmProxy;
 import io.realm.Realm;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -7,6 +10,8 @@ import static com.projeto.horadorango.util.RealmUtil.getNextPrimaryKey;
 /**
  * Created by Mell on 24/10/2016.
  */
+@Parcel(implementations = { BairroRealmProxy.class },
+        value = Parcel.Serialization.FIELD, analyze = { Bairro.class })
 public class Bairro extends RealmObject {
 
     @PrimaryKey

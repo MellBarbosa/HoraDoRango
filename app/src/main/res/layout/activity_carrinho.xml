@@ -117,8 +117,9 @@
         android:layout_alignBottom="@+id/textView13"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_toRightOf="@+id/textView20"
-        android:layout_toEndOf="@+id/textView20" />
+        android:layout_toEndOf="@+id/textView15"
+        android:layout_toRightOf="@+id/textView15"
+        android:textAlignment="textEnd" />
 
     <TextView
         android:text="  Valor  "
@@ -128,9 +129,9 @@
         android:textStyle="normal|bold"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="24sp"
+        android:textAlignment="textEnd"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/textView15"
-        android:layout_toEndOf="@+id/textView15"
-        android:textAlignment="textEnd" />
+        android:layout_toRightOf="@+id/textView17"
+        android:layout_toEndOf="@+id/textView17" />
 
 </RelativeLayout>

@@ -77,7 +77,7 @@ public class PedidoActivity extends AppCompatActivity implements View.OnClickLis
             tvHorarioFunc.setText(empresa.getHorario_func());
             tvHorariosEntrega.setText(empresa.getHorario_entrega());
             tvTelefones.setText(empresa.getTel1()+ "; " +empresa.getTel2()+ "; " +empresa.getTel3());
-            tvEnderecoEmpresa.setText(empresa.getEndereco().getEndereco() + ", Nº" + empresa.getEndereco().getNumero() + ',' + empresa.getEndereco().getBairro().getDescricao() );
+            tvEnderecoEmpresa.setText(empresa.getEndereco().getEndereco() + ',' + empresa.getEndereco().getNumero() + ',' + empresa.getEndereco().getBairro().getDescricao());
         }
 
         ListView produtosEmpresaListView = (ListView) findViewById(R.id.ProdutosEmpresaListView);

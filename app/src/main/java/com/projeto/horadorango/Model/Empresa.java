@@ -1,5 +1,8 @@
 package com.projeto.horadorango.model;
 
+import org.parceler.Parcel;
+
+import io.realm.EmpresaRealmProxy;
 import io.realm.Realm;
 import io.realm.RealmObject;
 import io.realm.annotations.Ignore;
@@ -7,8 +10,9 @@ import io.realm.annotations.PrimaryKey;
 
 import static com.projeto.horadorango.util.RealmUtil.getNextPrimaryKey;
 
+@Parcel(implementations = { EmpresaRealmProxy.class },
+        value = Parcel.Serialization.FIELD, analyze = { Empresa.class })
 public class Empresa extends RealmObject {
-
 
     @PrimaryKey
     private int id;
