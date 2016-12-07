@@ -37,7 +37,7 @@ import io.realm.Realm;
 
             realm = Realm.getDefaultInstance();
             int id = realm.where(Usuario.class).findFirst().getId();
-            enderecoAdapter = new EnderecoAdapter(this, realm.where(Endereco.class).equalTo("usuario.id", id).findAll());
+            enderecoAdapter = new EnderecoAdapter(this, realm.where(Endereco.class).equalTo("usuario_id", id).findAll());
             enderecoListView.setAdapter(enderecoAdapter);
         }
 

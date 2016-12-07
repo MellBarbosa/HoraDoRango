@@ -34,6 +34,7 @@ public class Endereco extends RealmObject{
     private int bairro_id;
     @Ignore
     private int cidade_id;
+    private int usuario_id;
 
     public long getId() {
         return id;
@@ -104,6 +105,7 @@ public class Endereco extends RealmObject{
 
     public Endereco setUsuario(Usuario usuario){
         this.usuario = usuario;
+        usuario_id = usuario.getId();
         return this;
     }
 
@@ -130,5 +132,9 @@ public class Endereco extends RealmObject{
 
     public int getCidade_id() {
         return cidade_id;
+    }
+
+    public int getUsuario_id() {
+        return usuario_id;
     }
 }

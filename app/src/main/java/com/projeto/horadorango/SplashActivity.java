@@ -51,6 +51,13 @@ public class SplashActivity extends AppCompatActivity {
     public void salvarInformacoes(Sincronizacao sincronizacao){
         realm.beginTransaction();
 
+        realm.delete(Categoria.class);
+        realm.delete(Bairro.class);
+        realm.delete(Cidade.class);
+        realm.delete(Endereco.class);
+        realm.delete(Produto.class);
+        realm.delete(Empresa.class);
+
         for(int i = 0; i < sincronizacao.getBairros().size() ;i++) {
             Bairro bairro = sincronizacao.getBairros().get(i);
             realm.copyToRealmOrUpdate(bairro);
@@ -66,6 +73,29 @@ public class SplashActivity extends AppCompatActivity {
            realm.copyToRealmOrUpdate(cidade);
         }
 
+       for (int i = 0; i < sincronizacao.getEnderecos().size() ;i++) {
+            Endereco endereco = sincronizacao.getEnderecos().get(i);
+
+           if (endereco.getBairro_id() > 0) {
+               Bairro bairro = realm.where(Bairro.class).equalTo("id", endereco.getBairro_id()).findFirst();
+               endereco.setBairro(bairro);
+           }
+
+           if (endereco.getCidade_id() > 0) {
+               Cidade cidade = realm.where(Cidade.class).equalTo("id", endereco.getCidade_id()).findFirst();
+               endereco.setCidade(cidade);
+           }
+
+           Usuario usuarioLogado = realm.where(Usuario.class).findFirst();
+           if (usuarioLogado != null && endereco.getUsuario_id() == usuarioLogado.getId()) {
+               endereco.setUsuario(usuarioLogado);
+           }
+
+            realm.copyToRealmOrUpdate(endereco);
+
+
+        }
+
         for(int i = 0; i < sincronizacao.getEmpresas().size() ;i++) {
             Empresa empresa = sincronizacao.getEmpresas().get(i);
 
@@ -75,24 +105,6 @@ public class SplashActivity extends AppCompatActivity {
             }
 
             realm.copyToRealmOrUpdate(empresa);
-        }
-
-       for (int i = 0; i < sincronizacao.getEnderecos().size() ;i++) {
-            Endereco endereco = sincronizacao.getEnderecos().get(i);
-
-           if (endereco.getBairro() == null) {
-               Bairro bairro = realm.where(Bairro.class).equalTo("id", endereco.getBairro_id()).findFirst();
-               endereco.setBairro(bairro);
-           }
-
-           if (endereco.getCidade() == null) {
-               Cidade cidade = realm.where(Cidade.class).equalTo("id", endereco.getCidade_id()).findFirst();
-               endereco.setCidade(cidade);
-           }
-
-            realm.copyToRealmOrUpdate(endereco);
-
-
         }
 
         for (int i = 0; i < sincronizacao.getProdutos().size() ;i++) {

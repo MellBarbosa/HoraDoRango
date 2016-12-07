@@ -24,5 +24,6 @@
         completions."
     </string>
     <string name="facebook_app_id">1805426013078355</string>
+    <string name="title_activity_lista_pedidos">ListaPedidos</string>
 
 </resources>

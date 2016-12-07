@@ -175,8 +175,7 @@ public class EnderecoActivity extends AppCompatActivity  {
 
         realm.beginTransaction();
 
-        if (endereco == null)
-            endereco = Endereco.create(realm);
+        endereco = new Endereco();
 
         endereco.setEndereco(enderecoRequest.getEndereco())
                 .setNumero(String.valueOf(enderecoRequest.getNumero()))
@@ -185,9 +184,10 @@ public class EnderecoActivity extends AppCompatActivity  {
                 .setBairro(bairro)
                 .setCidade(cidade)
                 .setPonto_referencia(enderecoRequest.getPonto_referencia())
-                .setUsuario(usuario);
+                .setUsuario(usuario)
+                .setId(enderecoRequest.getId());
 
-        realm.insertOrUpdate(endereco);
+        realm.copyToRealmOrUpdate(endereco);
         realm.commitTransaction();
 
         finish();
