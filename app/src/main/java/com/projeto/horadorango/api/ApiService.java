@@ -5,6 +5,7 @@ import com.projeto.horadorango.model.Categoria;
 import com.projeto.horadorango.model.Cidade;
 import com.projeto.horadorango.model.Empresa;
 import com.projeto.horadorango.model.Endereco;
+import com.projeto.horadorango.model.EnderecoRequest;
 import com.projeto.horadorango.model.Pedido;
 import com.projeto.horadorango.model.PedidoRequest;
 import com.projeto.horadorango.model.Produto;
@@ -36,4 +37,7 @@ public interface ApiService {
 
     @POST("api/pedidos")
     Call<Void> enviarPedido(@Body PedidoRequest pedidoRequest);
+
+    @POST("api/SalvarEndereco")
+    Call<EnderecoRequest> salvarEndereco (@Body EnderecoRequest enderecoRequest);
 }

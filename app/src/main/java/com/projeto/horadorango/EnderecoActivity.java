@@ -11,12 +11,18 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.projeto.horadorango.api.ApiComunicator;
 import com.projeto.horadorango.model.Bairro;
 import com.projeto.horadorango.model.Cidade;
 import com.projeto.horadorango.model.Endereco;
+import com.projeto.horadorango.model.EnderecoRequest;
+import com.projeto.horadorango.model.Usuario;
 
 
 import io.realm.Realm;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class EnderecoActivity extends AppCompatActivity  {
 
@@ -131,28 +137,61 @@ public class EnderecoActivity extends AppCompatActivity  {
             showMessage("Cep vazio");
             return;
         }
+        Usuario usuario = realm.where(Usuario.class).findFirst();
+
+        EnderecoRequest request = new EnderecoRequest();
+        request.setUsuario_id(usuario.getId());
+        request.setEndereco(edtEndereco.getText().toString());
+        request.setNumero(Integer.parseInt(edtNumero.getText().toString()));
+        request.setCep(edtCep.getText().toString());
+        request.setComplemento(edtComplemento.getText().toString());
+        request.setBairro_id(((Bairro) spBairro.getSelectedItem()).getId());
+        request.setCidade_id(((Cidade) spCidade.getSelectedItem()).getId());
+        request.setPonto_referencia(edtReferencia.getText().toString());
+
+        ApiComunicator.get().salvarEndereco(request).enqueue(new Callback<EnderecoRequest>() {
+            @Override
+            public void onResponse(Call<EnderecoRequest> call, Response<EnderecoRequest> response) {
+
+                salvarLocal(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<EnderecoRequest> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void showMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public void salvarLocal(EnderecoRequest enderecoRequest){
+
+        Cidade cidade = realm.where(Cidade.class).equalTo("id", enderecoRequest.getCidade_id()).findFirst();
+        Bairro bairro = realm.where(Bairro.class).equalTo("id", enderecoRequest.getBairro_id()).findFirst();
+        Usuario usuario = realm.where(Usuario.class).findFirst();
 
         realm.beginTransaction();
 
         if (endereco == null)
             endereco = Endereco.create(realm);
 
-        endereco.setEndereco(edtEndereco.getText().toString())
-                .setNumero(edtNumero.getText().toString())
-                .setCep(edtCep.getText().toString())
-                .setComplemento(edtComplemento.getText().toString())
-                .setBairro((Bairro) spBairro.getSelectedItem())
-                .setCidade((Cidade) spCidade.getSelectedItem())
-                .setPonto_referencia(edtReferencia.getText().toString());
+        endereco.setEndereco(enderecoRequest.getEndereco())
+                .setNumero(String.valueOf(enderecoRequest.getNumero()))
+                .setCep(enderecoRequest.getCep())
+                .setComplemento(enderecoRequest.getComplemento())
+                .setBairro(bairro)
+                .setCidade(cidade)
+                .setPonto_referencia(enderecoRequest.getPonto_referencia())
+                .setUsuario(usuario);
 
         realm.insertOrUpdate(endereco);
         realm.commitTransaction();
 
         finish();
-    }
 
-    public void showMessage(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
 

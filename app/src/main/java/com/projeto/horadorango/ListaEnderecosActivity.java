@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.projeto.horadorango.adapter.EnderecoAdapter;
 import com.projeto.horadorango.model.Endereco;
+import com.projeto.horadorango.model.Usuario;
 
 import io.realm.Realm;
 
@@ -35,7 +36,8 @@ import io.realm.Realm;
             enderecoListView.setOnItemClickListener(this);
 
             realm = Realm.getDefaultInstance();
-            enderecoAdapter = new EnderecoAdapter(this, realm.where(Endereco.class).equalTo("usuario.id", 1).findAll());
+            int id = realm.where(Usuario.class).findFirst().getId();
+            enderecoAdapter = new EnderecoAdapter(this, realm.where(Endereco.class).equalTo("usuario.id", id).findAll());
             enderecoListView.setAdapter(enderecoAdapter);
         }
 

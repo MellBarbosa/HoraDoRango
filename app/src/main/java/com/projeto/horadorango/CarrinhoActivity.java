@@ -90,7 +90,8 @@ public class CarrinhoActivity extends AppCompatActivity {
     public void SelecionaEndereco() {
 
         Realm realm = Realm.getDefaultInstance();
-        final List<Endereco> enderecos = realm.copyFromRealm(realm.where(Endereco.class).findAll());
+        Usuario usuario = realm.where(Usuario.class).findFirst();
+        final List<Endereco> enderecos = realm.copyFromRealm(realm.where(Endereco.class).equalTo("usuario.id", usuario.getId()).findAll());
         if (enderecos.size() == 0) {
             return;
         }

@@ -141,6 +141,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void salvarUsuario(Usuario usuario){
 
+        android.util.Log.e("userID", "" + usuario.getId());
         login_button.setVisibility(View.GONE);
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
